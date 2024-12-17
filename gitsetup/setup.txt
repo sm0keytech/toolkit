@@ -1,0 +1,26 @@
+git --version
+
+install git if not installed 
+
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+git config --list
+
+git clone git@github.com:username/repo.git (since using ssh)
+
+ssh-keygen -t ed25519 -C "your_email@example.com"
+add the public key to the github
+
+ssh -T git@github.com (test ssh connection)
+
+ssh-add c:/Users/YOU/.ssh/id_ed25519
+
+add a new file
+git add .
+git commit -m "test committ"
+git push
+
+if somethings wrong remember
+git remote add origin main [link]
+git remote -v (i think it should be ssh)
