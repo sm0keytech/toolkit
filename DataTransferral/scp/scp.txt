@@ -1,0 +1,1 @@
+scp path/to/file.exe user@your.machine.ip:/whatever/path

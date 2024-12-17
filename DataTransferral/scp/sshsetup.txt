@@ -1,0 +1,4 @@
+sudo systemctl start ssh
+sudo systemctl enable ssh
+do data transfer
+sudo systemctl stop ssh
