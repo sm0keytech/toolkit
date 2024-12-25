@@ -1,0 +1,10 @@
+Browse to http://172.16.42.1:1471 and follow the on screen instructions  
+
+make sure ur on the pinapple network 
+
+connext to a 2 amp power source 
+
+blue flashing = setting up
+solid blue = ready 
+solid red = invalid usb files
+alternating blue/red = flashing firmware, do not unplug power 
