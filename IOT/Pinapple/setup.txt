@@ -10,3 +10,5 @@ solid red = invalid usb files
 alternating blue/red = flashing firmware, do not unplug power 
 
 current root - r00t
+
+current mgmt pass - r00t@?!£
