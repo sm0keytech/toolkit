@@ -1,0 +1,24 @@
+hide a scan with decoys you want (ip addresses):
+nmap -D DECOY_IP1,DECOY_IP2,ME
+
+
+hide a scan with random ip addresses:
+nmap -D RND,RND,ME
+
+use a HTTP/SOCKS4 proxy to relay connections:
+nmap --proxies PROXY_URL
+(proxy url is an ip address for a proxy server)
+
+spoof MAC address: 
+nmap --spoof-mac MAC_ADDRESS 
+(only works if you are in the same network segment, sharing the same ethernet.)
+if you are on the same ethernet, you can do this to bypass the trust policies.
+
+
+spoof a source IP addres:
+nmap -S ip_addr
+
+use a specific source port number:
+nmap -g PORT-NUM or nmap --source-port PORT-NUM
+
+
