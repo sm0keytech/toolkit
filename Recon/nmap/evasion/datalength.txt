@@ -1,0 +1,30 @@
+packet fragmentation is decent for evasion
+
+nmap tcp scans are 24 bytes total. if you want to limit each packet size
+to 8 bytes, then you can use:
+
+-f within the nmap command. example:
+nmap -sS -Pn -f -F machine_ip.
+
+-ff fragments packets to 16 bytes, so you would have 1 packet at 16 bytes
+and 1 packet at 8 bytes to make up the 24 byte total packet.
+
+the packet will then split into 3 different packets which will be sent
+over the network.
+
+maximum transmission unit can also split the packet. some devices like 
+ethernet have a MTU of 1500.
+
+running nmap with --mtu 8 will be the same as running nmap with -f.
+you need to add the ip header size to the packet length, which gives
+you the size of the packet. the minimum size of a IP header is generally
+20. 
+
+length of MTU should always be a multiple of 8.
+
+--data-length does data (again needs to be a multiple of 8) in a 
+specific format to ensure that the packets are always the same size,
+and adds padding if they are not.
+
+--data-length 64 will add extra padding if needs be to get the length
+of the data within the packet to 64.
