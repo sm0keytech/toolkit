@@ -1,0 +1,2 @@
+-sS is the stealth scan which sends ack packets. requries nmap with sudo
+privileges. super useful and gets past a lot of hassle within firewalls.
