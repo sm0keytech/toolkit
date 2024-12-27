@@ -1,2 +1,8 @@
 -sS is the stealth scan which sends ack packets. requries nmap with sudo
 privileges. super useful and gets past a lot of hassle within firewalls.
+
+-Pn stops host enumeration (stops nmap from pinging the host / ports) 
+since some intrusion prevention systems are trained to drop ICMP echo
+requests (ping) and other host discovery probes (eg TCP or UDP). Pn skips
+checking if host is alive, which is useful for bypassing the ping filter
+but in turn can make scans a bit longer.
