@@ -16,3 +16,5 @@ sudo nano /etc/resolv.conf
 and adding the addresses into there to ensure they can be resolved.
 
 make sure after all steps are complete to run the restart nm command above
+
+ALSO MAKE SURE TO CONNECT TO THE VPN LOL
