@@ -1,0 +1,6 @@
+ssh user@ip (most of the time, i think DC can differ.)
+
+
+ssh with domain controller shit (christ knows):
+ssh za.tryhackme.com\\<username>@thmjump1.za.tryhackme.com
+
