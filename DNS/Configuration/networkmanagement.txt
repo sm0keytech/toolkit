@@ -1,0 +1,18 @@
+Network manager -> Advanced Network Configuration -> Your connection -> ipv4 settings 
+
+Set the DNS here to the THM Domain Controller DNS (THMDC usually)
+
+Add another DNS such as 1.1.1.1 or 8.8.8.8 so you still have internet access
+
+Then run sudo systemctl restart NetworkManager
+
+Then, hardcode some DNS management into /etc/hosts file within kali sys
+
+You can also get into the network manager by just doing command:
+sudo nm-connection-editor
+
+Then, double down by going into 
+sudo nano /etc/resolv.conf
+and adding the addresses into there to ensure they can be resolved.
+
+make sure after all steps are complete to run the restart nm command above
