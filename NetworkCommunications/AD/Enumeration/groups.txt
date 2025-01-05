@@ -1,0 +1,7 @@
+These commands are to enumerate Active Directory groups.
+
+Starting off with the most simple command, listing all of the groups:
+
+Get-ADGroup -Filter * | Select-Object Name
+
+
