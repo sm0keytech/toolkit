@@ -1,0 +1,21 @@
+For this, you need to do a few different things:
+
+- Execute the bloodhound binary on the victim machine in order to gather
+the information needed to enumerate AD.
+- Install bloodhound & neo4j on attacker machine.
+- Setup Neo4j server and configure the password at the address:
+http://localhost:7474
+
+Then, run bloodhound as the following command:
+bloodhound --no-sandbox
+
+Once the bloodhound binary has finished being executed, scp it to your 
+local attackbox and then drag & drop the ZIP file into the bloodhound 
+neo4j database.
+
+From here, you can see loads of enumeration about the AD system.
+
+Remember, its really good, but its also really loud.
+
+You also need to find a bloodhound binary (I think mainly they are exe)
+to run on the target system.
