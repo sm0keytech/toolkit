@@ -1,0 +1,3 @@
+To get the domains AD information, use:
+
+Get-ADDomain -Server za.tryhackme.com 
