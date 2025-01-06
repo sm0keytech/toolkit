@@ -19,3 +19,9 @@ Remember, its really good, but its also really loud.
 
 You also need to find a bloodhound binary (I think mainly they are exe)
 to run on the target system.
+
+To clean the database, if neo4j was installed with the APT package manager
+it will be located under /etc/neo4j/data/databases
+
+Go and just remove the "neo4j" or whatever the name is database and 
+restart the service.
