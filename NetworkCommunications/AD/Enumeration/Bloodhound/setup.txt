@@ -4,6 +4,8 @@ For this, you need to do a few different things:
 the information needed to enumerate AD.
 - Install bloodhound & neo4j on attacker machine.
 - Setup Neo4j server and configure the password at the address:
+sudo neo4j start
+sudo neo4j stop (when you are done with the server)
 http://localhost:7474
 
 Then, run bloodhound as the following command:
@@ -25,3 +27,6 @@ it will be located under /etc/neo4j/data/databases
 
 Go and just remove the "neo4j" or whatever the name is database and 
 restart the service.
+
+Remember to use sudo whilst doing it because some of it is write protected:
+sudo rm -r databasename
