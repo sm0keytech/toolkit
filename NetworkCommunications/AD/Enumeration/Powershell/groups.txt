@@ -1,10 +1,10 @@
 These commands are to enumerate Active Directory groups.
 
 Starting off with the most simple command, listing all of the groups:
-
 Get-ADGroup -Filter * | Select-Object Name
 
 Then, you can see inside of a group using the command:
-
 Get-ADGroup -Identity "Tier 2 Admins" -Properties *
 
+You can see who is in a group with the command:
+Get-ADGroupMembers -Identity "Tier 2 Admins"

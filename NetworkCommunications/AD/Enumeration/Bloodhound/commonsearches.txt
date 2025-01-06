@@ -1,0 +1,5 @@
+To find a computer that has a "Admin to" relationship to another computer:
+MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
+
+
+
