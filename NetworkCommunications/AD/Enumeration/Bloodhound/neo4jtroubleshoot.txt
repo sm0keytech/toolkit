@@ -1,0 +1,18 @@
+So, had some trouble with neo4j and its getting a little bit annoying.
+
+I need to find a better way to clean the database, but for now:
+
+Just do the reinstall if needed:
+
+sudo apt-get remove --purge neo4j
+
+and then, reinstall:
+
+sudo apt-get install neo4j
+
+then credentials will be 
+neo4j
+neo4j
+respectively
+
+upon new launch.
