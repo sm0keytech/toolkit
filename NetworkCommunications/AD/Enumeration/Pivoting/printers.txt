@@ -1,0 +1,23 @@
+Here, we could use a printer as a pivot point within a network in order 
+to get into a server. This is done through an enumeration command and 
+a server to ensure that we are able to get into the printer and thus then
+pivot into the server we want to get access to.
+
+GWMI Win32_Printer -Computer thmserver2.za.tryhackme.loc
+
+This is checking whether we have a printer that we can pivot to.
+
+If you get an access denied error, you can also try:
+
+Get-PrinterPort -ComputerName thmserver2.za.tryhackme.loc
+
+If both don't work, sometimes you just have to take a leap of faith
+in order to get into the network you want to get into.
+
+We then want to ensure that SMB signing is not enforced. We can do this 
+through a simple NMAP scan:
+
+nmap --script=smb2-security-mode -p445 thmserver1.za.tryhackme.loc thmserver2.za.tryhackme.loc
+
+If signing is enforced, we are cooked. If signing is allowed but not enforced,
+we are good to go.
