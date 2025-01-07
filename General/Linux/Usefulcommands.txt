@@ -1,0 +1,2 @@
+sudo apt-get update to fetch everything i need to update
+sudo apt-get upgrade to actually do the update 
