@@ -1,3 +1,6 @@
 python3 -m http.server 1234 
 
 wget http://10.10.10.10:1234/file.txt
+
+if transferring to a windows machine:
+wget http://10.10.10.10:1234/file.txt -o file.txt
