@@ -1,0 +1,4 @@
+keyscan_start - Start a keylogger
+keyscan_dump - Dump the keylogger
+
+
