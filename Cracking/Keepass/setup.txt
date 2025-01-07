@@ -1,0 +1,7 @@
+Tihs is for when you want to attempt to crack a database.
+
+First, install it from the package manager:
+
+sudo apt-get install keepassx
+
+Download your database using metasploit.

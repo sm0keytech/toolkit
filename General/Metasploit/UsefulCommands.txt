@@ -1,4 +1,10 @@
 keyscan_start - Start a keylogger
 keyscan_dump - Dump the keylogger
 
+migrate - useful for when you want to migrate to a different process to run
+something on. For example, migrating to the explorer process so we are within
+a users account, and then starting a keylogger to see if we can pick up anything
+useful.
+
+download - pretty obvious
 
