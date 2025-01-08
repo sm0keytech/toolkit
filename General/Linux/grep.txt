@@ -11,3 +11,6 @@ grep -i "something you need" -A10 -B5
 
 -A = after, number specifies however many lines.
 -B = before, number again specifies however many lines.
+
+normal format for grepping anything is:
+cat something.txt | grep -i "something" -A5 -B5
