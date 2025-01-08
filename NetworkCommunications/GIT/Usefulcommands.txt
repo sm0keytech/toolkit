@@ -1,0 +1,10 @@
+Remember to pull before doing anything!
+
+git pull
+
+
+To publish changes:
+
+git add .
+git commit -m "added something"
+git push
