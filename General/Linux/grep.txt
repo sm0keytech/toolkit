@@ -1,0 +1,13 @@
+Usually, using the following is decent:
+
+grep -i "whatever you need to find"
+the -i flag makes it so nothing is case sensitive, which i always tend
+to do.
+
+if you need more context, there are a few ways to do it, but i always 
+tend to lean towards:
+
+grep -i "something you need" -A10 -B5
+
+-A = after, number specifies however many lines.
+-B = before, number again specifies however many lines.

