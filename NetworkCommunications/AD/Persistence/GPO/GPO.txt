@@ -1,0 +1,11 @@
+For getting into gpo, see the command inside of the powershell directory
+one outside of this.
+
+Once youre in GPO, make sure to add the correct group policy management
+thing to the GUI, and then nagivate into it. 
+
+After you've navigated into it, find the GPO that you can edit, then,
+simply put your user into it and give them access to whatever you are 
+attempting to obtain.
+
+Simple!

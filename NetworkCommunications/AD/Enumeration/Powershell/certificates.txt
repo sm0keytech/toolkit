@@ -1,0 +1,13 @@
+This is used to enumerate the certificates within AD to see if there are 
+any that can be manipulated with poisonous parameter combinations.
+
+Need to do some more research on this, but here is a basic one:
+
+Client Authentication - The certificate can be used for Client Authentication.
+CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT - The certificate template allows us to specify the Subject Alternative Name (SAN).
+CTPRIVATEKEY_FLAG_EXPORTABLE_KEY - The certificate will be exportable with the private key.
+Certificate Permissions - We have the required permissions to use the certificate template.
+
+
+PowerShell command:
+certutil -Template -v > templates.txt

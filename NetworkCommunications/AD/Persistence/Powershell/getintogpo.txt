@@ -1,0 +1,17 @@
+You need relevant admin permissions to do this, however its usually pretty
+nice, here we are using runas to inject our credentials into memory:
+
+Usually, you want to compromise an administrator account with more 
+permissions such as a server admin's account in order to get the gpo editor,
+then inject their credentials into memory (in the AD username part below)
+and then pop in to edit the gpo
+
+runas /netonly /user:za.tryhackme.loc\<AD Username> cmd.exe
+
+dir \\za.tryhackme.loc\sysvol -- checks if you have access
+
+then simply open mmc:
+
+mmc
+
+
