@@ -7,4 +7,4 @@ Then, you can see inside of a group using the command:
 Get-ADGroup -Identity "Tier 2 Admins" -Properties *
 
 You can see who is in a group with the command:
-Get-ADGroupMembers -Identity "Tier 2 Admins"
+Get-ADGroupMember -Identity "Tier 2 Admins"
