@@ -1,7 +1,9 @@
-Tihs is for when you want to attempt to crack a database.
+Just a database and a database viewer for when you find a database and
+need a specific thing to view it. Think the file extension for this is
 
-First, install it from the package manager:
+.kdbx
 
-sudo apt-get install keepassx
+Just go online and install the AppImage, then once thats done, go ahead 
+and chmod +x it to make it an executable, then execute it and its nice 
+and installed for you to view your database loot.
 
-Download your database using metasploit.
