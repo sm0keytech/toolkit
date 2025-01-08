@@ -1,2 +1,8 @@
 sudo apt-get update to fetch everything i need to update
 sudo apt-get upgrade to actually do the update 
+
+
+App image installation:
+simply make it an executable and bang it in.
+chmod +x thing.AppImage
+./thing.AppImage

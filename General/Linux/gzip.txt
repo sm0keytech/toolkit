@@ -1,0 +1,2 @@
+gzip -d gzipfile to decompress
+or gzip flile to zip it
