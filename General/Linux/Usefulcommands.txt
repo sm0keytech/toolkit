@@ -6,6 +6,8 @@ more lightweight than apt search.
 
 sudo apt search <pkg> to search for something online, more thorough.
 
+sudo apt install <pkg> after searching for it to force it to install.
+
 pwd - print working directory
 
 App image installation:
