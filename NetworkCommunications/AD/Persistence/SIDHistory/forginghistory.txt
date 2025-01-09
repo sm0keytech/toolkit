@@ -31,5 +31,19 @@ Start-Service -Name ntds
 Now, we should start a new powershell session and then verify that we have
 admin credentials:
 Get-ADUser aaron.jones -Properties sidhistory 
+dir \\thmdc.za.tryhackme.loc\c$ 
 
- 
+If SID history is there before you hit this attack, it is definitely 
+an issue and one that you need to figure out. You can attempt to remove
+it with a tool such as  AD-RSAT PowerShell cmdlets.
+
+However, the blue team will struggle to remove this without those AD-RSAT
+tools. They really need to come equipped to the battle for this one, 
+since an attribute cannot be removed without those tools as they are 
+protected. 
+
+These SID attribtues are incredibly hard to find, since no regular tool
+will tell you that something is wrong within the system. This is because
+SID history is only applied and used once the user authenticates. 
+
+

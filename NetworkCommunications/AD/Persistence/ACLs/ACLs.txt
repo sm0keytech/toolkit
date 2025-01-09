@@ -1,0 +1,58 @@
+Persisting through AD group templates.
+
+While we could just an account to every privileged group that we can find,
+that's probably not the best ways of staying stealthy within the network.
+
+In order to ensure our persistence is a bit better, and to make the blue
+team scratch their heads a bit, we want to use things like group templates
+to ensure that they cannot find us as easy.
+
+One such template which would be good to use is the AdminSDHolder container.
+This container exists in every AD domain, and its Access Control List 
+is used as a template to copy permissions to all protected groups.
+
+Protected groups are simply privileged groups such as Domain Admins, 
+Administrators, Enterprise Admins and Schema Admins. A full list of groups
+is available here:
+https://learn.microsoft.com/en-us/previous-versions/technet-magazine/ee361593(v=msdn.10)
+
+A process named SDProp takes the ACL (Access control list) of the AdminSDHolder
+container and applies it to protected groups every 60 minutes. 
+
+We can thus write an ACE that will grant us full permissions on all
+protected groups.
+
+In order to deploy our persistence onto AdminSDHolder, we need to 
+first use runas to inject administrator credentials into memory:
+runas /netonly /user:thmchilddc.tryhackme.loc\Administrator cmd.exe
+
+And then execute MMC from a new terminal.
+mmc
+
+Once you have an MMC window, add the Users and Groups Snap-in (File->Add Snap-In->Active Directory Users and Computers). Make sure to enable Advanced Features (View->Advanced Features). We can find the AdminSDHolder group under Domain->System
+
+Navigate to the Security of the group (Right-click->Properties->Security):
+
+Let's add our low-privileged user and grant Full Control:
+
+Click Add.
+Search for your low-privileged username and click Check Names.
+Click OK.
+Click Allow on Full Control.
+Click Apply.
+Click OK.
+
+Now we just need to wait 60 minutes, and our user will have full control over all Protected Groups.
+
+Once done, give it a minute and then review the security permissions of a Protected Group such as the Domain Admins group (you can use the search command to find this group):
+
+ACL = Access Control List.
+
+
+If you really want to persist, you can grant full control to the 
+Domain Users group in the AdminSDHolder group, which means any 
+low-privileged user would be granted full control over all Protected
+Groups. Combining this with a full DC Sync means the blue team will 
+have to reset every single credential in the domain to flush us out 
+completely.
+
