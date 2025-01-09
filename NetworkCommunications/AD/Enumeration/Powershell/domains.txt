@@ -1,3 +1,6 @@
 To get the domains AD information, use:
 
 Get-ADDomain -Server za.tryhackme.com 
+
+You can also just use:
+Get-ADDomain
