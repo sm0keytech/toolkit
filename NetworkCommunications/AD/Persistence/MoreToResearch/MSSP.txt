@@ -1,0 +1,4 @@
+Malicious Security Support Provider (SSP)
+Exploiting the SSP interface, it is possible to add new SSPs. We can add Mimikatz's mimilib as an SSP that would log all credentials of authentication attempts to a file. We can specify a network location for logging, which would allow mimilib to send us credentials as users authenticate to the compromised host, providing persistence.
+
+https://adsecurity.org/?p=1760

@@ -1,0 +1,4 @@
+Directory Service Restore Mode 
+Domain controllers have an internal break glass administrator account called the DSRM account. This password is set when the server is promoted to a DC and is seldom changed. This password is used in cases of emergencies to recover the DC. An attacker can extract this password using Mimikatz and use this password to gain persistent administrative access to domain controllers in the environment.
+
+https://adsecurity.org/?p=1714

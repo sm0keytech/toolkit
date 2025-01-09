@@ -1,0 +1,3 @@
+Using Mimikatz, we can deploy a skeleton key. Mimikatz created a default password that will work for any account in the domain. Normal passwords will still work, making it hard to know that this attack has taken place. This default password can be used to impersonate any account in the domain.
+
+https://blog.netwrix.com/2022/11/29/skeleton-key-attack-active-directory/
