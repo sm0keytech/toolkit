@@ -1,0 +1,14 @@
+Firstly, when we are trying to SAM harvest to get hashes, we need to 
+ensure that we dont have access to the database, as this could save
+us a LOT of time trying to bypass something that doesn't even have
+a lock.
+
+SAM = Security Account Manager btw 
+
+Run this command:
+c:\Windows\System32\config\sam
+
+If we can access the directory, we could read / copy it and then 
+take it home with us for offline cracking or PTH attacks with mimikatz.
+
+
