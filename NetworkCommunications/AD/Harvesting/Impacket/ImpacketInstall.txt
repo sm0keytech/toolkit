@@ -1,0 +1,3 @@
+sudo git clone https://github.com/fortra/impacket.git /opt/impacket/
+cd /opt/impacket
+sudo python3 setup.py install

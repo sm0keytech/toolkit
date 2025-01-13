@@ -8,5 +8,14 @@ python3 /opt/impacket/examples/secretsdump.py -sam /tmp/sam-reg -system /tmp/sys
 (command could be iffy, update it accordingly. think i covered this in
 exploiting AD too)
 
+once we obtain the NTLM hashes, we can try to use hashcat to crack them
+if they are guessable, otherwise we can use them in PTH attacks with mimi
+
+note - if you use metasploit to get a hashdump, the result will be different
+then manually parsing them because some of the NTLM hashes metasploit 
+recovers are from the AD network rather than the local machine which is
+stored inside of the SECURITY file, which would need to be dumped in order
+to decrypt those rather than the SYSTEM hive.
+
 
 

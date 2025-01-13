@@ -1,0 +1,4 @@
+so LSASS is local security authority server service 
+(christ)
+
+handles a lot of decent stuff for us
