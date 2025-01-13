@@ -1,0 +1,2 @@
+For more information, we can look at the MITRE ATT&CK framework:
+https://attack.mitre.org/tactics/TA0006/

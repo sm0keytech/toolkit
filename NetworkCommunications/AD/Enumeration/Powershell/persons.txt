@@ -1,0 +1,6 @@
+Here is how to enumerate AD accounts within a computer, checking
+descriptions for any passwords that might've been left behind etc:
+
+Get-ADUser -Filter * -Properties * | select Name,SamAccountName,Description
+
+Filter gives us some good stuff to print out.

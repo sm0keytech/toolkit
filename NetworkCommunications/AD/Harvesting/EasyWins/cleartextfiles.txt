@@ -1,0 +1,39 @@
+The following are some of the types of clear-text files that an attacker may be interested in:
+
+Commands history
+Configuration files (Web App, FTP files, etc.)
+Other Files related to Windows Applications (Internet Browsers, Email Clients, etc.)
+Backup files
+Shared files and folders
+Registry
+Source code 
+
+Executed powershell commands history file:
+C:\Users\USER\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+
+Finding the word "password" within the window registry:
+reg query HKLM /f password /t REG_SZ /s
+#OR
+reg query HKCU /f password /t REG_SZ /s
+
+Database files are extremely useful because you can download them and then
+try to get into the database. Use correct tools such as keepass, covered
+inside of the breaching section inside of the AD folder of this repo.
+
+Password managers can withhold flaws that can be exploited to extract
+data.
+
+Memory dump can be extremely useful, we can find things such as:
+Cleartext credentials
+Cached passwords
+AD tickets.
+
+Active directory can have some misconfigurations that can lead to being 
+able to leak credentials. This includes:
+
+NTDS: Contains AD users' credentials, making it a target for attackers.
+Group Policy SYSVOL: Leaked encryption keys let attackers access administrator accounts. Check Task 8 for more information about the vulnerable version of SYSVOL.
+Users' description: Administrators set a password in the description for new employees and leave it there, which makes the account vulnerable to unauthorized access. 
+AD Attacks: Misconfiguration makes AD vulnerable to various attacks
+
+Network sniffing can also be used to attempt to find credentials.

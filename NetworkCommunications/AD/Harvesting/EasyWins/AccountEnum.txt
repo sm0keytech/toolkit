@@ -1,0 +1,3 @@
+Get-ADUser -Filter * -Properties * | select Name,SamAccountName,Description
+
+Checks if theres anything left inside the descriptions of AD accounts 

