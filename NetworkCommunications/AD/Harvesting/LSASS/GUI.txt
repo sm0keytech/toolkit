@@ -1,0 +1,7 @@
+To dump any running Windows process using the GUI, open the Task Manager, and from the Details tab, find the required process, right-click on it, and select "Create dump file".
+
+You can dump the lsass process in order to try to get some information from it.
+
+Once the dumping process is finished, a pop-up message will show containing the path of the dumped file. Now copy the file and transfer it to the AttackBox to extract NTLM hashes offline.
+
+
