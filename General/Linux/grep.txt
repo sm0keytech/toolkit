@@ -14,3 +14,9 @@ grep -i "something you need" -A10 -B5
 
 normal format for grepping anything is:
 cat something.txt | grep -i "something" -A5 -B5
+
+
+if you are trying to find a bit of text inside directories of directories, you can make it easy using the following:
+grep -rnw '.' -e "domain controller sync"
+
+this searches for the text "domain controller sync" from where i am (i started from the root of my toolkit directory) and it looks thru everything!

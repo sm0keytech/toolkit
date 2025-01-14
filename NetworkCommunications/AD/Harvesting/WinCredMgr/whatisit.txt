@@ -1,0 +1,11 @@
+windows credential manager is a feature that stores logon sensitive
+information for websites.
+
+there are four credential categories:
+web credentials
+windows credentials
+generic credentials
+certificate based credentials 
+
+We can access the Windows Credential Manager through GUI (Control Panel -> User Accounts -> Credential Manager) or the command prompt
+

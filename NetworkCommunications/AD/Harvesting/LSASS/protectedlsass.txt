@@ -1,0 +1,22 @@
+in some other year, microsoft introduced protected lsass to prevent it
+from being extracted easily.
+
+Note: we need a powershell prompt in administrator mode for this.
+
+it sits in the registry:
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa
+
+
+Note to get users' hashes, a user (victim) must have logged in to a system, >
+If the LSA protection is enabled, we will get an error executing the "sekurl>
+The command returns a 0x00000005 error code message (Access Denied).
+
+Lucky for us, Mimikatz provides a mimidrv.sys driver that works on kernel le>
+!+
+Note: If this fails with an isFileExist error, exit mimikatz, navigate to C:>
+
+Once the driver is loaded, we can disable the LSA protection by executing th>
+!processprotect /process:lsass.exe /remove
+
+
+

