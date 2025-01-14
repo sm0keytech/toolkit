@@ -1,0 +1,12 @@
+So, for web enumeration, its good to look for the following things:
+
+Valid usernames
+Password policies
+
+And common places such as:
+Registration places
+Previous data breaches, even better if you can find user / pass combos as you could whip up a custom wordlist which hits a similar to this
+Password reset features
+Verbose errors
+
+

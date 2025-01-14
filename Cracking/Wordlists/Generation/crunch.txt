@@ -1,0 +1,4 @@
+This is something that you can use to generate numbers from one point to another, for example, 1 to 100 or 100 to 200.
+
+Here is the basic syntax:
+crunch 3 3 -o otp.txt -t %%% -s 100 -e 200     

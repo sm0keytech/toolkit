@@ -1,0 +1,15 @@
+So, this is when you are looking at verbose errors which tell you a little too much:
+
+For example, you could whip a valid username out of this one.
+
+Internal paths - things you shouldn't be able to see, but come up with error, so are there
+Database details - offering you a sneak peek into the database, could spill table names and other errors
+User Information - Sometimes usernames can give info for personal data, providing clues.
+
+Invalid login attempts: This can help distinguish between valid and invalid usernames.
+SQL Injection: Involves slipping malicious SQL into the code to see if you can get into databases.
+File inclusion / Path traversal: By manipulating file paths, hackers can traverse websites and try to find new areas or new errors.
+Form Manipulation: Tweaking form fields or parameters can trick an application into disclosing more errors or backend logic or sensitive user information.
+Application Fuzzing: Sending unexpected inputs to various parts of the application to see how it responds, to identify weak points. Burp suite intruder does this well.
+
+
