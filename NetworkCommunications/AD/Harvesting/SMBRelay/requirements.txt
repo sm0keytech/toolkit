@@ -1,0 +1,5 @@
+The SMB Relay attack abuses the NTLM authentication mechanism (NTLM challenge-response protocol). 
+The attacker performs a Man-in-the-Middle attack to monitor and capture SMB packets and extract hashes. 
+For this attack to work, the SMB signing must be disabled. SMB signing is a security check for integrity and ensures the communication is between trusted sources. 
+
+exploiting AD covers this well.

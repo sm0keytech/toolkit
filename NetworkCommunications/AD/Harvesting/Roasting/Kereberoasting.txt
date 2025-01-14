@@ -1,0 +1,22 @@
+Kerberoasting is a common AD attack to obtain AD tickets that helps with persistence.
+In order for this attack to work, an adversary must have access to SPN (Service Principal Name) accounts such as IIS User, MSSQL, etc.
+The Kerberoasting attack involves requesting a Ticket Granting Ticket (TGT) and Ticket Granting Service (TGS). 
+
+This attack's end goal is to enable privilege escalation and lateral network movement. 
+
+Let's do a quick demo about the attack. First, we need to find an SPN account(s), and then we can send a request to get a TGS ticket.
+We will perform the Kerberoasting attack from the AttackBox using the GetUserSPNs.py python script.
+
+Remember to use the THM.red/thm account with Passw0rd! as a password. (This is our example)
+python3.9 /opt/impacket/examples/GetUserSPNs.py -dc-ip 10.10.207.157 THM.red/thm
+
+The previous command is straightforward: we provide the Domain Controller IP address and the domain name\username. 
+Then the GetUserSPNs script asks for the user's password to retrieve the required information.
+The output revealed that we have an SPN account, svc-user. Once we find the SPN user, we can send a single request to get a TGS ticket for the srv-user user using the -request-user argument.
+
+python3.9 /opt/impacket/examples/GetUserSPNs.py -dc-ip 10.10.207.157 THM.red/thm -request-user svc-user 
+
+Now, it is a matter of cracking the obtained TGS ticket using the HashCat tool using -m 13100 mode as follows
+hashcat -a 0 -m 13100 spn.hash /usr/share/wordlists/rockyou.txt
+
+

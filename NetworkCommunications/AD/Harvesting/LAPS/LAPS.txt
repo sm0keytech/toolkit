@@ -1,0 +1,28 @@
+so, we wiill now be enumerating this thing!
+
+The provided VM has the LAPS enabled, so let's start enumerating it. First, we check if LAPS is installed in the target machine, which can be done by checking the admpwd.dll path.
+dir "C:\Program Files\LAPS\CSE"
+
+The output confirms that we have LAPS on the machine. Let's check the available commands to use for AdmPwd cmdlets as follows,
+Get-Command *AdmPwd*
+
+Next, we need to find which AD organizational unit (OU) has the "All extended rights" attribute that deals with LAPS.
+Find-AdmPwdExtendedRights -Identity THMorg
+
+Our OU is THMorg in this example.
+
+We found out that THM\THMGroupReader has all extended rights.
+
+Let's check the group THMGroupReader:
+net groups "THMGroupReader"
+
+From this, we have found out that an account named "bk-admin" is a member of this group.
+
+This means that we nede to compromise the bk-admin account or impersonate the bk-admin user account.
+
+net user test-admin
+to check an admins account.
+
+after compromisnig the right user (bk-admin in this case), we can log into their account, and then get into the group and get the password using:
+Get-AdmPwdPassword -ComputerName creds-harvestin
+

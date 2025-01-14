@@ -1,0 +1,4 @@
+this is available in the exploiting AD room inside of tryhackme, meaning its
+probably inside of the exploiting part of the AD directory in this git repo.
+
+maybe edit this later and include it here when you have a minute.

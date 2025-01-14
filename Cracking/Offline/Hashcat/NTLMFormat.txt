@@ -1,0 +1,3 @@
+hashcat -m 1000 -a 0 /path/to/ntlm_hashes.txt /path/to/wordlist/such/as/rockyou.txt
+
+m 1000 = NTLM hash mode

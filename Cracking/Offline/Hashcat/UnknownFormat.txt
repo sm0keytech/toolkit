@@ -1,0 +1,5 @@
+You can run hashcat using
+
+Hashcat hash.txt /usr/share/wordlists/rockyou.txt 
+
+for a normal hash attack, however this may prove to be a little difficult.

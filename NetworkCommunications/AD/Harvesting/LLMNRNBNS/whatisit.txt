@@ -1,0 +1,9 @@
+Link-Local Multicast Name Resolution (LLMNR) and NetBIOS Name Service (NBT-NS) help local network machines to find the right machine if DNS fails.
+For example, suppose a machine within the network tries to communicate with no existing DNS record (DNS fails to resolve).
+In that case, the machine sends multicast messages to all network machines asking for the correct address via LLMNR or NBT-NS.
+
+The NBNS/LLMNR Poisoning occurs when an attacker spoofs an authoritative source on the network and responds to the Link-Local Multicast Name Resolution (LLMNR) and NetBIOS Name Service (NBT-NS) traffic to the requested host with host identification service. If you want to learn more about the attack, we suggest checking THM Breaching AD room.
+
+The end goal for SMB relay and LLMNR/NBNS Poisoning attacks is to capture authentication NTLM hashes for a victim, which helps obtain access to the victim's account or machine. 
+
+

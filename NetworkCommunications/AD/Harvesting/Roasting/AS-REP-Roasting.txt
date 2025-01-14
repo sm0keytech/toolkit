@@ -1,0 +1,23 @@
+AS-REP Roasting is the technique that enables the attacker to retrieve password hashes for AD users whose account options have been set to "Do not require Kerberos pre-authentication".
+This option relies on the old Kerberos authentication protocol, which allows authentication without a password.
+Once we obtain the hashes, we can try to crack it offline, and finally, if it is crackable, we got a password!
+
+Before performing the roasting, we need to gather a list of the accounts which should be gathered from the enumeration step.
+
+Put them in a txt list like:
+
+james
+cat
+dog
+owl
+
+We will be using the Impacket Get-NPUsers script this time as follows,
+python3.9 /opt/impacket/examples/GetNPUsers.py -dc-ip 10.10.207.157 thm.red/ -usersfile /tmp/users.txt
+
+We specified the IP address of the domain controller with the -dc-ip argument and provided a list of domain users to check against.
+Once the tool finds the right user with no preauthentication configuration, it will generate the ticket.
+
+Various cybersecurity and hacking tools also allow cracking the TGTs harvested from Active Directory, including Rubeus and Hashcat. 
+Impacket GetNPUsers has the option to export tickets as John or hashcat format using the -format argument.
+
+
