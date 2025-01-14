@@ -1,1 +1,9 @@
-hello
+so, for foxyproxy:
+
+go to firefox, download foxyproxy.
+then, hit add, add the following:
+
+(this is for burp suite obv)
+IP: 127.0.0.1
+port: 8080
+name: burp or whatever
