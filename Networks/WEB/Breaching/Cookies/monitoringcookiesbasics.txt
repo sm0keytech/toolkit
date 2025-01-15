@@ -1,0 +1,39 @@
+So, for this, we usually do it within kali firefox.
+The 2 main places are:
+
+Storage > Cookies
+For editing values, changing, removing and adding cookies.
+
+The next place is inside the network tab, where we monitor the network traffic, and see the cookies coming and going.
+
+
+For the basics, you will be looking for the following:
+When cookies need authentication for a website.
+Looking at those session cookies. Looking at expiry dates, paths, attempting to decode them, etc.
+
+We can check for whether a cookie has been terminated using the following:
+Client-side, we can easily check by logging in and out. Before we log out, keep the cookie. Then, re-authenticate, and replace your new
+cookie with the old cookie value. This will check whether the serverside has deleted your cookie.
+
+If you get an error 500, meaning an internal server error, it means that the cookie termination is working, but there is something wrong, as an
+invalid session should not lead to an internal server error.
+
+We can also check the local storage section within the storage, and play around with those values to see if we can get anything from there.
+Sometimes this can be an easy win, and can leave us with more information then we should've had to begin with.
+
+Update role, refresh page, repeat.
+
+Doing this, we would've mapped out the session management of cookies within this website.
+
+Given what I am currently doing, I could report that cookies have excessive session lifetimes.
+
+We could also investigate further:
+Access to API endpoints.
+Web application logs for accountability of actions.
+
+
+Make sure to edit the following places when looking for more things, or more access:
+Local storage for cookies
+Local storage for general data
+
+And then make sure to monitor the network tab for cookies, etc to ensure that we can see what things are going where.

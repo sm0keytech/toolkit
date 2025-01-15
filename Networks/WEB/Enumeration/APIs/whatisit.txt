@@ -1,0 +1,44 @@
+APIs, or Application Programming Interfaces, are very very useful, and extrodinarily popular today.
+API stands for Application Programming Interface. It's a set of instructions that allow different software programs to communicate with each other. 
+
+For example, lets take a look at this API:
+The API project has a single API endpoint, namely http://10.10.22.190/api/v1.0/exampleX.
+The X is replaced by the number of the example. This endpoint accesses two HTTP methods:
+
+POST: To authenticate and receive your JWT, you need to make a POST request with the credentials provided in JSON format.
+GET: To get details about your user and ultimately perform the privilege escalation to recover your task flag.
+
+API Credentials
+To authenticate to the API, a JSON body with the credentials needs to be sent as follows:
+username: user
+password: passwordX
+
+API Examples
+Below are the two cURL requests you can use to interface with the API. For authentication, the following cURL request can be made:
+curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "password" : "passwordX" }' http://10.10.22.190/api/v1.0/exampleX
+For user verification, the following cURL request can be made:
+curl -H 'Authorization: Bearer [JWT token]' http://10.10.22.190/api/v1.0/example2?username=Y
+
+The [JWT token] component has to be replaced with the JWT received from the first request. In this case, Y can be either user or admin, depending on your permissions.
+
+API Permissions
+The main goal in each example is to gain admin privileges and verify these permissions.
+Once you have a valid JWT where admin is set to 1, you can request the details of the admin user.
+This will return your flag. The process will be shown for the first example, but you will have to copy the steps for the rest of the examples.
+
+JWT Structure
+A JWT consists of three components, each Base64Url encoded and separated by dots
+Header - The header usually indicates the type of token, which is JWT, as well as the signing algorithm that is used.
+Payload - The payload is the body of the token, which contain the claims. A claim is a piece of information provided for a specific entity. In JWTs, there are registered claims, which are claims predefined by the JWT standard and public or private claims. 
+Signature - The signature is the part of the token that provides a method for verifying the token's authenticity. The signature is created by using the algorithm specified in the header of the JWT. Let's dive a bit into the main signing algorithms.
+
+Signing Algorithms
+Although there are several different algorithms defined in the JWT standard, we only really care about three main ones:
+None - The None algorithm means no algorithm is used for the signature. Effectively, this is a JWT without a signature, meaning that the verification of the claims provided in the JWT cannot be verified through the signature.
+Symmetric Signing - A symmetric signing algorithm, such as HS265, creates the signature by appending a secret value to the header and body of the JWT before generating a hash value. Verification of the signature can be performed by any system that has knowledge of the secret key.
+Asymmetric Signing - An asymmetric signing algorithm, such as RS256, creates the signature by using a private key to sign the header and body of the JWT. This is created by generating the hash and then encrypting the hash using the private key. Verification of the signature can be performed by any system that has knowledge of the public key associated with the private key that was used to create the signature.
+
+Security in the Signature
+JWTs can be encrypted (called JWEs)
+
+

@@ -1,0 +1,4 @@
+Save the JWT to a text file called jwt.txt.
+Download a common JWT secret list. For this room, you can use wget https://raw.githubusercontent.com/wallarm/jwt-secrets/master/jwt.secrets.list to download such a list.
+Use Hashcat to crack the secret using hashcat -m 16500 -a 0 jwt.txt jwt.secrets.list
+
