@@ -1,0 +1,21 @@
+Authorisation header format:
+Authorization: Basic <credentials>
+where <credentials> is the base64 encoding of username:password.
+
+
+Input any username and password in the pop-up and capture the Basic Auth Request using Burp.
+Right-click the request and send it to Intruder.
+In Burp Intruder, go to the "Positions" tab and decode the base64 encoded string in the Authorization header.
+Once decoded, highlight the decoded string and click the Add button in the top right corner.
+Next is configuring the payloads. Go to the Payloads tab and set the payload type to Simple list and choose your preferred wordlist.
+
+Since the header is base64 encoded, we need to add two rules in the Payload processing section. The first automatically adds a username to the password, so instead of 123456, the payload will be "admin:123456".
+payloads > add payload processing rule > add prexit > admin:
+
+The second rule will base64 encode the combined username and password from the supplied list.
+payloads > add payload processing rule > encoding > base64 encoded
+
+We should also remove the character "=" (equal sign) from the encoding because base64 uses "=" for padding. To do this, scroll down and remove the "=" sign from the list of characters in the Payload encoding section.
+
+Once you get a Status code 200, it means the brute force is successful, and one of the passwords in the supplied list is working. Decode the encoded base64 string in the successful request.
+

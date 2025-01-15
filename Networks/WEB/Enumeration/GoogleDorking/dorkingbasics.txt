@@ -1,0 +1,3 @@
+To find administrative panels: site:example.com inurl:admin
+To unearth log files with passwords: filetype:log "password" site:example.com
+To discover backup directories: intitle:"index of" "backup" site:example.com

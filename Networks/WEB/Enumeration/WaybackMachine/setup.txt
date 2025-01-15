@@ -1,0 +1,10 @@
+Think of the Internet Archive's Wayback Machine (https://archive.org/web/) as a time machine. It lets you travel back and explore older versions of websites, uncovering files and directories that are no longer visible but might still linger on the server. These relics can sometimes provide a backdoor right into the present system.
+
+For example, using TryHackMe as a target, we can see all of the website's past versions from 2018 to the present.
+
+
+git clone https://github.com/tomnomnom/waybackurls
+cd waybackurls
+sudo apt install golang-go -y # This command is optional
+go build
+ls -lah

@@ -1,0 +1,9 @@
+So, for burp suite intruder, its simple.
+
+Get that HTTP request, send it to the intruder, then add the tags either side of the point you want to attack.
+Use a sniper attack which is the basic one.
+
+(Burp community is rate limited to hell but what can you do)
+
+Then, if you got a wordlist, generate it, then add it using the "load" feature, then itll load the wordlist into the point of attack and 
+work its magic. You will wait a while because of burp suite shit rate limiting but thats ok.
