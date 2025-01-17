@@ -1,0 +1,3 @@
+In general, if you can get your hands on one of these tokens through writing a token stealer and then stealing it 
+through social engineering, its a good way but an illegal way of getting into a company, and not really valid
+inside of a pentest where targetting the employees is almost never inside of the scope if we are honest.

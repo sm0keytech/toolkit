@@ -1,0 +1,7 @@
+Evilginx is a tool that is typically used in red team engagements.
+https://github.com/kgretzky/evilginx2
+As it can be used to execute sophisticated phishing attacks, effectively bypassing Multi-Factor Authentication (MFA).
+It operates as a man-in-the-middle proxy that can intercept and redirect OTPs meant for legitimate users.
+How Evilginx works is that when an attacker sends a phishing link to you, and you enter your credentials on what looks like a legitimate login page, Evilginx captures your username, password, and OTP before forwarding them to the real site, giving attackers access using your cookies without needing to crack your MFA.
+
+

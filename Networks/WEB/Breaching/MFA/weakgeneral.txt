@@ -1,0 +1,17 @@
+this is the holes in the code for some of these MFA applications:
+
+Weak OTP Generation Algorithms
+The security of a One-Time Password (OTP) is only as strong as the algorithm used to create it.
+
+Application Leaking the 2FA Token
+If an application handles data poorly or has vulnerabilities like insecure API endpoints, it might accidentally leak the 2FA token in the application's HTTP response.
+
+Brute Forcing the OTP
+Even though OTPs are designed for one-time use, they aren't immune to brute-force attacks. 
+
+Lack of Rate Limiting
+Without proper rate limiting, an application is open to attackers to keep trying different OTPs without difficulty. 
+
+
+
+
