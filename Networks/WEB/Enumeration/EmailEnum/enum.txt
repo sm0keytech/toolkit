@@ -1,0 +1,2 @@
+this is a script that enumerates for emails for a list, simply change the variables and add a wordlist and we have it!
+python3 script.py usernames_gmail.com.txt

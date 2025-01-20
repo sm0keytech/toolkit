@@ -1,0 +1,3 @@
+Generate a list of numbers from one number to the other number:
+
+seq 0000 9999 >> codes.txt

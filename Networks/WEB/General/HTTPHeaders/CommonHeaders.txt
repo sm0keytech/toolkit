@@ -1,0 +1,7 @@
+Within this, these can be used and implemented within a tool such as burp suite to bypass things such as rate limiting, etc in order to 
+brute force something like OTPs for MFA.
+
+X-Forwarded-For: This is a header which dictates the origin IP of where this request came from. Coding this into a brute forcer and changing the IP when required
+could allow an attacker to brute force a one time passcode.
+
+

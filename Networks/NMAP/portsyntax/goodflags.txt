@@ -1,0 +1,7 @@
+-p-: all ports
+
+-t4: generally good traceroute option, pretty quick and provides some extra enumeration.
+
+-sn: no port scan, just ping scan. prints out available hosts that respond to discovery probes.
+
+-A: Enable OS detection, version detection, script scanning, and traceroute

