@@ -1,0 +1,30 @@
+Bypassing the Login Screen
+
+
+Basic bypass:
+open a website and capture the login with burp.
+We now proceed to intercept another login request and modify the user and pass variables to send the desired arrays:
+This forces the database to return all user documents and as a result we are finally logged into the application:
+you can attempt to use $ne to do it within the http request to login:
+user[$ne]=user$pass[$ne]=pass (obviously modify this request to get what you need)
+
+Bypass as another user:
+We have managed to bypass the application's login screen, but with the former technique, we can only login as the first user returned by the database. By making use of the $nin operator, we are going to modify our payload so that we can control which user we want to obtain.
+First, the $nin operator allows us to create a filter by specifying criteria where the desired documents have some field, not in a list of values. So if we want to log in as any user except for the user admin, we could modify our payload to look like this:
+
+user[$nin][]=admin&pass[$ne]=asdf
+this can work sometimes to log ya in, obvs modify the request
+
+This would translate to a filter that has the following structure:
+['username'=>['$nin'=>['admin'] ], 'password'=>['$ne'=>'aweasdf']]
+
+Which tells the database to return any user for whom the username isn't admin and the password isn't aweasdf. As a result, we are now granted access to another user's account.
+Notice that the $nin operator receives a list of values to ignore. We can continue to expand the list by adjusting our payload as follows:
+
+user[$nin][]=admin&user[$nin][]=jude&pass[$ne]=aswed
+
+This would result in a filter like this:
+['username'=>['$nin'=>['admin', 'jude'] ], 'password'=>['$ne'=>'aweasdf']]
+
+Note: The jude user above is not an actual user, but an example of how an additional username can be added.
+

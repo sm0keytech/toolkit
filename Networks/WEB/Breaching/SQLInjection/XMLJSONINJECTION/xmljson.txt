@@ -1,0 +1,13 @@
+XML and JSON Injection 
+
+Applications that parse XML or JSON data and use the parsed data in SQL queries can be vulnerable to injection if they do not properly sanitise the inputs. 
+involves injecting malicious data into XML or JSON structures that are then used in SQL queries. This can occur if the application directly uses parsed values in SQL statements.
+
+{
+  "username": "admin' OR '1'='1--",
+  "password": "password"
+}
+
+If the application uses these values directly in a SQL query like SELECT * FROM users WHERE username = 'admin' OR '1'='1'-- AND password = 'password', it could result in an injection.
+
+
