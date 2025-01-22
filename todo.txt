@@ -1,0 +1,12 @@
+Active directory
+- Breaching AD notes 
+- More on pass the hash
+
+Reverse engineering
+- Reverse engineering notes
+
+NMAP
+- More on NMAP, basic commands and then the notes from the THM rooms.
+
+Brute forcing
+- Bit more on brute forcing like hydra
