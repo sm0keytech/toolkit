@@ -14,3 +14,11 @@ App image installation:
 simply make it an executable and bang it in.
 chmod +x thing.AppImage
 ./thing.AppImage
+
+
+if you want to find a txt file within a directory you can use *txt
+for example
+
+ls /var/www/html/*txt
+or
+just ls *txt

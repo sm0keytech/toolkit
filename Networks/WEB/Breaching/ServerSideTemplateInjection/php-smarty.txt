@@ -1,0 +1,12 @@
+Smarty is a powerful template engine for PHP that enables developers to separate presentation from business logic, improving application maintainability and scalability. However, its capability to execute PHP functions within templates can expose applications to server-side template injection attacks if not securely configured.
+Smarty's flexibility allows for dynamic execution of PHP functions within its templates, which can become a significant security risk. The ability to execute PHP code through template variables or modifiers should be carefully controlled to prevent unauthorized command execution.
+
+Exploitation
+Before crafting a payload, it's essential to confirm if the application really uses Smarty. For example, go to http://ssti.thm:8000/smarty/.
+Inject a simple Smarty tag like {'Hello'|upper} to see if it will be processed. If the application returns "HELLO", it means that the template engine used by the application is Smarty.
+
+Once you confirm that the site is vulnerable to SSTI via Smarty, you can craft a payload that uses PHP functions that execute system commands. One of the most common functions that do this is the system() function. Using the payload {system("ls")} is a direct and effective payload if Smarty's security settings allow PHP function execution.
+
+When the Smarty template engine processes this input, it will execute the ls command. This command will reveal the directory listing of the server directory where the script is executed, providing insights into the server's file system.
+
+

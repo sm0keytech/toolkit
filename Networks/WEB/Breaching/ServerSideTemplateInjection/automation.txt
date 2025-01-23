@@ -1,0 +1,22 @@
+for this, you can use:
+
+SSTImap is a tool that automates the process of testing and exploiting SSTI vulnerabilities in various template engines. Hosted on GitHub, it provides a framework for discovering template injection flaws.
+If you're using AttackBox, the tool is installed in /opt/SSTImap directory. If you're using your own machine, you can install it by cloning the repository from GitHub and setting up its environment. Here's how you can get started:
+
+git clone https://github.com/vladko312/SSTImap.git
+cd SSTImap
+pip install -r requirements.txt
+
+~~if this doesnt work, consult the impacket stuff, im sure its a similar install.
+
+SSTImap is capable of the following:
+
+Template Engine Detection: SSTImap can help identify the template engine used by a web application, which is crucial for crafting specific exploits.
+Automated Exploitation: For known vulnerabilities, SSTImap can automate the process of exploiting them.
+
+You can use SSTImap by providing it with the target URL and any necessary options. Here’s a simple usage example:
+
+python3 sstimap.py -X POST -u 'http://ssti.thm:8002/mako/' -d 'page='
+This command attempts to detect the SSTI vulnerability using tailored payloads.
+
+
