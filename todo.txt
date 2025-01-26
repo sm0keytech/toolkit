@@ -14,3 +14,6 @@ Brute forcing
 Wordlist editing
 - Add more wordlist editing options to the cracking thingy
 - for example using some words and combining them etc
+
+JWT Stuff
+- Redo hammer room to solidify knowledge
