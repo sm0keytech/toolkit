@@ -10,3 +10,7 @@ NMAP
 
 Brute forcing
 - Bit more on brute forcing like hydra
+
+Wordlist editing
+- Add more wordlist editing options to the cracking thingy
+- for example using some words and combining them etc

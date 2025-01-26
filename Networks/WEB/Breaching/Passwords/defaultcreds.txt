@@ -1,0 +1,1 @@
+if you hit a phpmyadmin or any sort of backend database server, ensure you check defauls creds to ensure you cant just hit an easy login

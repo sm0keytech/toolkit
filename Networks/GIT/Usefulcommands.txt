@@ -8,3 +8,9 @@ To publish changes:
 git add .
 git commit -m "added something"
 git push
+
+if you want to get a wordlist or something, go to the github website, then click the raw button, copy the link and then the following will work:
+
+wget https://raw.githubusercontent.com/payloadbox/sql-injection-payload-list/refs/heads/master/Intruder/exploit/Auth_Bypass.txt
+
+obv replace the link with whatever you need

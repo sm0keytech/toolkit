@@ -1,0 +1,6 @@
+you can go online and find some good githubs with a list of sql payloads in txt format which you can then
+load into burp suite or whatever tool suitable and test them one by one to see if you can get any easy wins
+
+
+heres a good one
+https://github.com/payloadbox/sql-injection-payload-list/blob/master/Intruder/exploit/Auth_Bypass.txt
