@@ -1,0 +1,5 @@
+dns recon through dnsrecon
+
+dnsrecon -t brt -d acmesupport.thm
+
+-t brt means type: brute force

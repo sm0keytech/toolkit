@@ -1,0 +1,4 @@
+this is a python tool to enumerate subdomains.
+
+./sublist3r.py -d acmesupport.thm
+python3 sublist3r.py -d acmesupport.thm

@@ -1,0 +1,5 @@
+there is a gui option for this called dirbuster.
+but we are not a pussy so we use the CLI 
+
+dirb http://example.com /usr/share/wordlists/dirb/common.txt
+

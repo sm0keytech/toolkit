@@ -1,0 +1,3 @@
+this is where you can go to test ssti injection
+
+https://hacktricks.boitatech.com.br/pentesting-web/ssti-server-side-template-injection

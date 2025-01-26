@@ -1,0 +1,9 @@
+This is usually a good way to go about the enum inside of a WAPP pentesting activity:
+
+Portscan (nmap obv)
+Directory bruteforcing
+Vhost fuzzing
+Check source code 
+Check /robots.txt
+Check website functionality
+Start playing around with burp

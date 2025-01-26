@@ -1,0 +1,4 @@
+lightweight subdomian enum tool
+
+assetfinder --subs-only example.com
+

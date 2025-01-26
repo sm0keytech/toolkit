@@ -1,0 +1,9 @@
+the good hacker will always enum subdomains before attacking a website.
+
+google dorking comes first, just cause its easy.
+
+heres an example:
+
+site:*.domain.com -site:www.domain.com
+
+site:*.tryhackme.com -site:www.tryhackme.com

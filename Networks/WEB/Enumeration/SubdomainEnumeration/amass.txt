@@ -1,0 +1,4 @@
+comprehensive subdomain enumeration tool
+
+amass enum -d example.com
+
