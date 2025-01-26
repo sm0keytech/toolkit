@@ -9,4 +9,11 @@ Once you confirm that the site is vulnerable to SSTI via Smarty, you can craft a
 
 When the Smarty template engine processes this input, it will execute the ls command. This command will reveal the directory listing of the server directory where the script is executed, providing insights into the server's file system.
 
+The most recent one I got within SSTI was the following:
+
+email=example%40example.com&fname={{['ls+/home','']|sort('passthru')}}&lname=beans
+
+this will put the email as example@example.com, as it should,
+the last name as beans, as it should,
+but as the first name, it will execute ls /home, url encoded, and executed through the command "sort passthru".
 

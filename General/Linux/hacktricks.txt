@@ -1,0 +1,3 @@
+hacktricks is a useful github page that you can close and then host and it gives you a load of good stuff.
+
+https://github.com/HackTricks-wiki/hacktricks
