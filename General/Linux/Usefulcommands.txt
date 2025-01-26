@@ -22,3 +22,9 @@ for example
 ls /var/www/html/*txt
 or
 just ls *txt
+
+To find something like netcat, you could use 
+which nc 
+or sometimes 
+locate nc if you want to find the files y
+

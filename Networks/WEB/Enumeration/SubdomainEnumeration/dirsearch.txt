@@ -1,0 +1,4 @@
+pretty decent tool for subdomain enumeration again, i think its quite thorough which is nice 
+its also a lot quicker and does a few more CTFy things
+
+dirsearch -u http://10.10.82.19

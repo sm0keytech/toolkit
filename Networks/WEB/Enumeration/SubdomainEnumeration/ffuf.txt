@@ -1,0 +1,33 @@
+ffuf is a really decent tool for a lot of different things
+
+ffuf basic syntax:
+ffuf -u <URL> -w <WORDLIST> -mc <STATUS_CODES>
+
+ffuf for directory fuzzing:
+ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200,204,301,302,307,403
+
+-u: Specifies the target URL. The keyword FUZZ is replaced by each word in the wordlist.
+-w: Path to the wordlist to use for fuzzing.
+-mc: Match specific HTTP status codes (e.g., 200 for OK, 301/302 for redirects, 403 for forbidden, etc.).
+If you omit this, FFUF will show all responses, which can clutter the results.
+
+ffuf for file extensions:
+ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200,403 -e .php,.html,.txt
+
+recursive fuzzing for digging deeper:
+ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200 -recursion
+
+example for subdomain fuzzing:
+ffuf -u http://FUZZ.example.com -w /usr/share/wordlists/subdomains.txt -mc 200
+
+output options:
+ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200 -o results.txt
+-o: Saves the output to a file in JSON format.
+
+optional flags & decent tips:
+-t 100 speeds threads up to 100, default is 40.
+
+-fs to filter responses by size
+ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -fs 0
+
+-v is verbose mode.
