@@ -1,0 +1,81 @@
+For linux, you can use things such as LinPEAS (WinPEAS for windows) to enumerate a linux system pretty fully.
+2 more great tools are GTFOBins (linux) and LOLBAS (Windows) which provide some really good tips and tricks for this.
+
+Some more things that should always be checked are the following:
+- OS Version: Can definitely affect it, see for any CVEs.
+
+- Kernel Version: Check to see if there are any kernel vulnerabilities.
+(Be careful with kernel exploits as some of them can be explosive and unstable)
+
+- Running services: its important to understand which services are running on a host, as a lot can be used for privesc (see gtfobins)
+ps -aux | grep 'root' (finds processes, greps the root)
+
+- Installed packages and versions: It's also important to understand what software packages are installed, and their versions to check if there are any
+available exploits.
+
+- Logged in users: Understanding which users are available and logged in can be critical for lateral and horizontal movement.
+
+- User home directories: Other user's home directories could contain valuable information that you can use for this.
+
+- Check the arp cache to see what other hosts are being accessed. 
+
+- Sudo privileges: Often the sudoer file contains a field like "NOPASSWD" which could allow commands to be run without entering a password.
+
+- Configuration files: Configuration files can hold a nice wealth of information. It's worth searching through all the files that end in extensions such as 
+.conf and .config for usernames, passwords and other secrets.
+
+- Readable shadow file: For any user that has a password configured, the shadow file will contain a password and a salt. If the file is readable, the password
+hashes can be extracted and offline cracked.
+
+- Password hashes in /etc/passwd: This file is readable by all users. On legacy systems, this was the password file. Whilst not common, embeded devices and routers
+alike may still have passwords in here.
+
+- Cron jobs: Use scheduled tasks, misconfigure using paths or something else and add your bash script to get to root.
+
+- Unmounted file systems and additional drives: These file systems could contain sensitive information, such as files or passwords, and could be mounted to be
+exploited.
+
+- Writeable directories: Understanding which directories have write access will give us the ability to maybe write things such as $PATH and others of which
+we could get a root shell from. We can use the "find" command for this.
+
+- Writeable files: We might be able to write files in order to give us a nice root shell.
+
+- Privileged groups: Sometimes in linux systems there are privileged users which could be in privileges groups. Maybe we could add ourselves or something else
+in order to get into them.
+
+Some commands to check:
+ls -a (check for anything interesting)
+check the .bash_history file
+check .ssh to see if there are any extractable ssh keys
+sudo su (then no password), check if we could get in this way
+groups - check to see if there are any privileged groups
+
+Some useful groups:
+adm: is a group that is used for system monitoring tasks. Members of this group can read
+many log files in the /var/log directory that are usually owned by the root user.
+cdrom: This group can be used locally to give a set of users access to a CDROM drive and
+other optical drives.
+sudo: Members of this group can execute any command with sudo or pkexec. (See the
+default configuration in /etc/sudoers)
+lpadmin: Allows members to manage printers and pending jobs sent by other users.
+
+docker: A user who is added to the docker group effectively gains root-level access to the
+file system without a password. New Docker containers can be created by group members
+and running the command docker run -v /root:/mnt -it ubuntu creates a
+new Docker instance with the host file system's /root directory mounted as a volume. The
+mounted volume can be browsed after the container has started and the user is able to view
+or add new SSH keys for the root user. This procedure could be used to add a privileged user
+or obtain the contents of the /etc/shadow file for offline password cracking in other
+folders as well.
+
+lxd: LXD is similar to Docker and is Ubuntu's container manager. Upon installation, all users
+are added to the LXD group. Membership of this group can be used to escalate privileges by
+creating an LXD container, making it privileged, and then accessing the host file system at
+/mnt/root.
+
+disk: is a group that has raw access to disks. As virtually everything in Linux is treated as a
+file, this gives a user mostly equivalent access to that of the root user. An attacker can use
+debugfs to access the entire file system with root level privileges. This could be leveraged
+to access SSH keys, user credentials or add new users.
+
+
