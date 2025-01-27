@@ -1,0 +1,5 @@
+this is the command to find all the readable files within a system:
+
+find / -readable -type f 2>/dev/null
+
+dev null silences the errors by sending them to dev null

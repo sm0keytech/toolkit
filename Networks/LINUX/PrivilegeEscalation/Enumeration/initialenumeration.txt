@@ -49,6 +49,8 @@ check the .bash_history file
 check .ssh to see if there are any extractable ssh keys
 sudo su (then no password), check if we could get in this way
 groups - check to see if there are any privileged groups
+sudo -l | checks which sudo processes you can run without admin privileges
+uname -a | displays detailed information for the kernel and the os
 
 Some useful groups:
 adm: is a group that is used for system monitoring tasks. Members of this group can read

@@ -1,0 +1,3 @@
+find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null 
+
+this command finds all writeable files within the linux system
