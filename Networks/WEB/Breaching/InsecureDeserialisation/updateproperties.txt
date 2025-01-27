@@ -35,3 +35,18 @@ Serialised cookie: After decoding the base64-encoded cookie value, we obtain the
 O:5:"Notes":3:{s:4:"user";s:5:"guest";s:4:"role";s:5:"guest";s:12:"isSubscribed";b:0;}
 
 
+As we already know, in PHP serialisation, the class name is prefixed to the property names in case it is not public to ensure uniqueness and help with deserialisation. This is a part of how PHP handles object serialisation and deserialisation internally. When an object is serialised, PHP stores the object's properties and class name. This ensures that when the object is later deserialised, PHP knows which class to instantiate and how to assign the serialised data to the object's properties correctly. Let's break down the serialised note into its components:
+O:5:"Notes":3: This represents an object (O) with the class name Notes, which has three properties.
+s:4:"user";s:5:"guest": This indicates a string (s) with a length of 4 characters, representing the property user with the value "guest".
+s:4:"role";s:5:"guest": Similar to the previous one, it represents the property role with the value "guest".
+s:12:"isSubscribed";b:0: This represents a boolean (b) property named isSubscribed with the value of false (0).
+
+Exploiting the Vulnerability
+In the current scenario, when the user would like to try to share the note, they get the following pop-up:
+
+Now, what is happening on the backend? The backend PHP code validates the incoming cookie, deserialises it, and then validates whether the user is subscribed. Our main task is to bypass that.
+Suppose an attacker intercepts this serialised cookie value and modifies the isSubscribed property from false (0) to true (1). The attacker can manipulate the subscription status without legitimate authorisation by changing the boolean value in the serialised data.
+
+After modifying, the attacker would base64 encode the serialised data again and replace the original cookie value with the modified one. This would grant them unauthorised access to share notes on other platforms, bypassing the intended subscription restrictions.
+
+you can just smash it thru cookies
