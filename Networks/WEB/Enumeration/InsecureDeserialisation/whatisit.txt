@@ -1,0 +1,26 @@
+Serialisation
+Think of serialisation, like packing your school bag in the morning. You have books, notebooks, a lunchbox, and a water bottle, which you need to organise into your bag. Serialisation is just like taking different pieces of information (like notes) and putting them together to make them easy to store or send to a friend. 
+
+In programming, serialisation is the process of transforming an object's state into a human-readable or binary format (or a mix of both) that can be stored or transmitted and reconstructed as and when required. This capability is essential in applications where data must be transferred between different parts of a system or across a network, such as in web-based applications.
+
+Example
+<?php
+$noteArray = array("title" => "My THM Note", "content" => "Welcome to THM!");
+$serialisedNote = serialize($noteArray);  // Converting the note into a storable format
+file_put_contents('note.txt', $serialisedNote);  // Saving the serialised note to a file
+?>
+The following output shows the serialised string in the note.txt file, which includes details of the note's structure and content. It’s stored in a way that can be easily saved or transmitted.
+Serialised Note: a:2:{s:5:"title";s:12:"My THM Note";s:7:"content";s:12:"Welcome to THM!";}
+
+Deserialisation
+Imagine you arrive at school and need everything you packed this morning. Deserialisation is like unpacking your school bag when you get to class; you take out each item so you can use it throughout the day. As you unpack your bag to get your books and lunch, deserialisation takes the packed-up data and turns it back into something you can use. Deserialisation is the process of converting the formatted data back into an object. It's crucial for retrieving data from files, databases, or across networks, restoring it to its original state for usage in applications.
+Following our previous example, here's how you might deserialise the note data in PHP:
+<?php
+$serialisedNote = file_get_contents('note.txt');  // Reading the serialised note from the file
+$noteArray = unserialize($serialisedNote);  // Converting the serialised string back into a PHP array
+echo "Title: " . $noteArray['title'] . "<br>";
+echo "Content: " . $noteArray['content'];
+?>
+This code reads the serialised note from a file and converts it back into an array, effectively reconstructing the original note. Discussing serialisation also necessitates a conversation about security. Like you wouldn’t want someone tampering with your school bag, insecure deserialisation can lead to significant security vulnerabilities in software applications. Attackers might alter serialised objects to execute unauthorised actions or steal data.
+
+

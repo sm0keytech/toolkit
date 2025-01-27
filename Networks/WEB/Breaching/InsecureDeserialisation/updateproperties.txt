@@ -1,0 +1,37 @@
+Updating Properties of an Object
+In this task, we'll explore a practical example in PHP, using a simple note-sharing application as our case study. Our note-sharing application allows users to create, save, and share notes easily. Users can input their notes into the application, which are then saved for future reference. Additionally, users can share their notes with others, facilitating collaboration and information exchange. The application also includes subscription-based features, ensuring only subscribed users can access certain functionalities such as note sharing. You can access the website by visiting the link http://10.10.167.34/case1.
+
+Let's go through how the application has been built.
+
+Defining the Notes Class
+The application has a Notes class, representing a note in our application. This class has three private properties: user, role, and isSubscribed. We also have setter and getter methods to manipulate the isSubscribed property.
+class Notes {
+
+    private $user;
+    private $role;
+    private $isSubscribed;
+
+    public function __construct($user, $role, $isSubscribed) {
+        $this->user = $user;
+        $this->role = $role;
+        $this->isSubscribed = $isSubscribed;
+    }
+
+    public function setIsSubscribed($isSubscribed) {
+        $this->isSubscribed = $isSubscribed;
+    }
+
+    public function getIsSubscribed() {
+        return $this->isSubscribed;
+ }
+}
+
+Storing User Data in Cookies
+When a user visits our application for the first time, it sets a serialised cookie containing their user data. This includes their user name, role, and subscription status (isSubscribed). If the user is a paid member (isSubscribed = true), they are allowed to share notes.
+
+Exploiting the Vulnerability
+In this step, we'll illustrate how an attacker can exploit the vulnerability by modifying the serialised cookie value to gain unauthorised access to share notes.
+Serialised cookie: After decoding the base64-encoded cookie value, we obtain the following serialised representation of the Notes object:
+O:5:"Notes":3:{s:4:"user";s:5:"guest";s:4:"role";s:5:"guest";s:12:"isSubscribed";b:0;}
+
+
