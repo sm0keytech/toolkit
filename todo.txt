@@ -17,3 +17,7 @@ Wordlist editing
 
 JWT Stuff
 - Redo hammer room to solidify knowledge
+
+Privilege escalation
+- Add more privesc to here, including more tactics and tricks.
+Windows && Linux.
