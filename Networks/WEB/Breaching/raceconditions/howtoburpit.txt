@@ -1,0 +1,9 @@
+so, its actually pretty simple.
+firstly, act like you are going to transfer some money.
+
+get the transfer request into burp, then send it to repeater.
+then, make a new group in burp under the + tab. add the one request to it.
+then, once the group is made, right click the request, duplicate it maybe 20 times.
+add the money in, then select the drop down arrow by send, and send it in whatever sequence you'd like to.
+
+pretty simple!

@@ -1,0 +1,6 @@
+Basics of File Inclusion
+A traversal string, commonly seen as ../, is used in path traversal attacks to navigate through the directory structure of a file system. It's essentially a way to move up one directory level. Traversal strings are used to access files outside the intended directory.
+Relative pathing refers to locating files based on the current directory. For example, include('./folder/file.php') implies that file.php is located inside a folder named folder, which is in the same directory as the executing script.
+Absolute pathing involves specifying the complete path starting from the root directory. For example, /var/www/html/folder/file.php is an absolute path.
+
+
