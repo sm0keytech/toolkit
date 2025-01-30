@@ -1,0 +1,6 @@
+Nmap (Passive Discovery)
+If the web server is running on Apache or Nginx, sometimes Nmap can detect virtual hosts:
+nmap -p 80,443 --script http-vhosts target.com
+This works if the web server leaks vhost information.
+
+

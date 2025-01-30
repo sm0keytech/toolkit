@@ -1,0 +1,17 @@
+ffuf -w vhosts.txt -H "Host: FUZZ.target.com" -u http://target.com
+
+-w vhosts.txt → Wordlist of potential vhosts (e.g., dev, admin, test).
+-H "Host: FUZZ.target.com" → Injects the wordlist into the Host header.
+-u http://target.com → The target URL (usually the IP or known domain).
+
+
+Fuzzing with IP instead of domain
+ffuf -w vhosts.txt -H "Host: FUZZ" -u http://192.168.1.100
+If 192.168.1.100 hosts multiple websites, this may reveal them.
+
+Filtering Unwanted Responses
+To remove generic 403/404 responses:
+ffuf -w vhosts.txt -H "Host: FUZZ.target.com" -u http://target.com -mc 200,302
+-mc 200,302 → Only show results where HTTP response is 200 (OK) or 302 (Redirect).
+
+

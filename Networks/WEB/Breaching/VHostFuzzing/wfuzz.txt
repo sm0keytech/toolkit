@@ -1,0 +1,9 @@
+WFUZZ (More Flexible Than FFUF)
+WFUZZ can manipulate headers dynamically.
+
+wfuzz -w vhosts.txt -H "Host: FUZZ.target.com" --hc 400,404 http://target.com
+--hc 400,404 → Hides 400 Bad Request and 404 Not Found responses.
+
+If the site has multiple virtual hosts under an IP:
+wfuzz -w vhosts.txt -H "Host: FUZZ" --hc 400,404 http://192.168.1.100
+

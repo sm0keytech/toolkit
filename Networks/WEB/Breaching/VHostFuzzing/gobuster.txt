@@ -1,0 +1,13 @@
+Gobuster (Faster Than FFUF for DNS Enumeration)
+Gobuster is mainly used for subdomain enumeration, but it can fuzz vhosts using its DNS mode.
+
+gobuster vhost -u target.com -w vhosts.txt
+vhost → Uses vhost enumeration mode.
+-u target.com → The main domain.
+-w vhosts.txt → Wordlist of potential subdomains.
+
+If a custom DNS resolver is needed:
+gobuster vhost -u target.com -w vhosts.txt -r 8.8.8.8
+
+
+
