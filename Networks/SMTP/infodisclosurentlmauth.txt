@@ -1,0 +1,3 @@
+Information Disclosure with NTLM Auth
+Some SMTP servers with NTLM Authentication enabled can disclose sensitive information, like Windows Server version and internal IP, if Anonymous Logon is allowed.
+nmap -p25 --script smtp-ntlm-info --script-args smtp-ntlm-info.fingerprint=on target.com

@@ -1,0 +1,3 @@
+DNS Mail Exchange (MX) Record Enumeration
+We can use the dig tool to find out the mail servers (MX servers) of a domain. This tool sends a DNS query and returns the list of MX servers.
+dig +short mx example.com

@@ -1,0 +1,23 @@
+SMTP Open Relay occurs when the SMTP server is configured to accept and transfer messages on the network that were neither for nor from local users.
+Here is a simple example of how to test for open relay:
+
+telnet target.com 25
+MAIL FROM:<test@example.com>
+RCPT TO:<test2@anotherexample.com>
+DATA
+Subject: Test open relay
+Test message
+.
+QUIT
+
+Post-Exploitation
+HELO	Identifies the client to the server.	HELO example.com
+EHLO	Extended HELLO.				EHLO example.com
+MAIL FROM:	Specifies the sender's email address.	MAIL FROM: <sender@example.com>
+RCPT TO:	Specifies the recipient's email address.	RCPT TO: <recipient@example.com>
+DATA	Indicates the start of the message body.	DATA
+RSET	Resets the session.			RSET
+NOOP	No operation; used for testing.		NOOP
+QUIT	Terminates the session.			QUIT
+
+
