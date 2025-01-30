@@ -1,0 +1,21 @@
+telnet 10.10.136.37 25
+or
+nc -v 10.10.136.37 25
+
+If it responds with an SMTP banner (220 mail.example.com ESMTP), you can issue commands like:
+HELO test
+MAIL FROM:<your@email.com>
+RCPT TO:<target@email.com>
+DATA
+This is a test.
+.
+QUIT
+
+Commands to try:
+HELO hostname
+ex: HELO mail.filepath.lab
+
+VRFY root
+(verify that there is a root user)
+
+pretty good for username enumeration :)
