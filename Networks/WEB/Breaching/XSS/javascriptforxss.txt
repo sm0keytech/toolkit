@@ -1,0 +1,17 @@
+JavaScript for XSS
+
+Basic knowledge of JavaScript is pivotal for understanding XSS exploits and adapting them to your needs. Knowing that XSS is a client-side attack that takes place on the target’s web browser, we should try our attacks on a browser similar to that of the target. It is worth noting that different browsers process certain code snippets differently. In other words, one exploit code might work against Google Chrome but not against Mozilla Firefox or Safari.
+Suppose you want to experiment with some JavaScript code in your browser. In that case, you need to open the Console found under Web Developer Tools on Firefox, Developer Tools on Google Chrome, and Web Inspector on Safari. Alternatively, use the respective shortcuts:
+
+On Firefox, press Ctrl + Shift + K
+On Google Chrome, press Ctrl + Shift + J
+On Safari, press Command + Option + J
+
+Let’s review and try some essential JavaScript functions:
+Alert: You can use the alert() function to display a JavaScript alert in a web browser. Try alert(1) or alert('XSS') (or alert("XSS")) to display an alert box with the number 1 or the text XSS.
+Console log: Similarly, you can display a value in the browser’s JavaScript console using console.log(). Try the following two examples in the console log: console.log(1) and console.log("test text") to display a number or a text string.
+Encoding: The JavaScript function btoa("string") encodes a string of binary data to create a base64-encoded ASCII string. This is useful to remove white space and special characters or encode other alphabets. The reverse function is atob("base64_string").
+
+
+Furthermore, you can experiment with displaying values, such as the document.cookie by using alert(document.cookie) for example.
+
