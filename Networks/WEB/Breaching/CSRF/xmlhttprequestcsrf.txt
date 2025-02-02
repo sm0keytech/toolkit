@@ -1,0 +1,39 @@
+XMLHttpRequest CSRF
+An asynchronous CSRF exploitation occurs when operations are initiated without a complete page request-response cycle. This is typical of contemporary online apps that leverage asynchronous server communication (via XMLHttpRequest or the Fetch API) and JavaScript to produce more dynamic user interfaces. These attacks use asynchronous calls instead of the more conventional form submissions. Still, they exploit the same trust relationship between the user and the online service.
+Consider an online email client, for instance, where users may change their email preferences without reloading the page. If this online application is CSRF-vulnerable, a hacker might create a fake asynchronous HTTP request, usually a POST request, and alter the victim's email preferences, forwarding all their correspondence to a malicious address.
+
+The following is a simplified overview of the steps that an asynchronous CSRF attack could take: 
+The victim opens a session saved in their browser's cookies and logs into the mailbox.thm.
+The attacker entices the victim to open a malicious webpage with a script that can send queries to the mailbox.thm.
+To modify the user's email forwarding preferences, the malicious script on the attacker's page makes an AJAX call to mailbox.thm/api/updateEmail (using XMLHttpRequest or Fetch).
+The mailbox.thm session cookie is included with the AJAX request in the victim's browser.
+After receiving the AJAX request, mailbox.thm evaluates it and modifies the victim's settings if no CSRF defences exist.
+
+In the context of an AJAX request, CSRF is like someone making your web browser unknowingly send a request to a website where you're logged in. It's as if someone tricked your browser into doing something on a trusted site without your awareness, potentially causing unintended actions or changes in your account. CSRF attacks can still succeed even when AJAX requests are subject to the Same-Origin Policy (SOP), which typically forbids cross-origin requests. 
+https://en.wikipedia.org/wiki/Same-origin_policy
+
+Here's an example of how an attacker can update a password on mybank.thm and send an asynchronous request to update the email seamlessly.
+<script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://mybank.thm/updatepassword', true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                alert("Action executed!");
+            }
+        };
+        xhr.send('action=execute&parameter=value');
+    </script>
+The XMLHttpRequest in the above code is designed to submit form data to the server and include custom headers. The complete process of sending requests will be seamless as the requests are performed in Javascript using AJAX. 
+
+Same Origin Policy (SOP) and Cross-Origin Resource Sharing (CORS) Bypass
+CORS and SOP bypass to launch CSRF is like an attacker using a trick to make your web browser send requests to a different website than the one you're on. Under an appropriate CORS policy, certain requests could only be submitted by recognised origins. However, misconfigurations in CORS policies can allow attackers to circumvent these limitations if they rely on origins that the attacker can control or if credentials are included in cross-origin requests. 
+<?php // Server-side code (PHP)
+ header('Access-Control-Allow-Origin: *'); 
+// Allow requests from any origin (vulnerable CORS configuration) .
+..// code to update email address ?>
+This is a simple PHP server-side script that handles the POST request. It has a vulnerable CORS configuration (Access-Control-Allow-Origin: *), allowing requests from any origin, and thus is vulnerable to CSRF since it doesn't implement anti-CSRF measures. The usage of Access-Control-Allow-Origin: * depends on the specific business use case and requirements. There are scenarios where allowing requests from different origins is necessary and legitimate, such as in public APIs or content distribution networks. However, it's crucial to carefully consider the security implications and ensure that Access-Control-Allow-Credentials is set accordingly to forward credentials only to trusted origins. It's important to note that Access-Control-Allow-Origin: * and Access-Control-Allow-Credentials:true cannot be used together due to security restrictions imposed by the CORS specification. You will learn various CORS bypass techniques in a separate room on THM.
+
+
+

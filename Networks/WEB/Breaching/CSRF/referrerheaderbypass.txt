@@ -1,0 +1,5 @@
+Referer Header Bypass
+When making an HTTP request, the referer header contains the URL of the last page the user visited before making the current request. Some websites guard against CSRF by only allowing queries if the referer header matches their domain. The utility of this as a stand-alone CSRF protection solution is reduced when this header may be changed or eliminated, as happens with user-installed browser extensions, privacy tools, or meta tags that instruct the browser to omit the Referer.
+Now that we have an understanding of various exploitation techniques of CSRF. We will now discuss key mitigation measures to protect from the attack. 
+
+

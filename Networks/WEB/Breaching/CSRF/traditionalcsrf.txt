@@ -1,0 +1,10 @@
+Traditional CSRF
+
+Conventional CSRF attacks frequently concentrate on state-changing actions carried out by submitting forms. The victim is tricked into submitting a form without realising the associated data like cookies, URL parameters, etc. The victim's web browser sends an HTTP request to a web application form where the victim has already been authenticated. These forms are made to transfer money, modify account information, or alter an email address.
+
+The above diagram shows traditional CSRF examples in the following steps:
+The victim is already logged on to his bank website. The attackers create a crafted malicious link and email it to the victim.
+The victim opens the email in the same browser.
+Once clicked, the malicious link enables the auto-transfer of the amount from the victim's browser to the attacker's bank account.
+
+

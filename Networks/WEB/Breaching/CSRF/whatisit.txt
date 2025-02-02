@@ -1,0 +1,10 @@
+What is CSRF?
+CSRF is a type of security vulnerability where an attacker tricks a user's web browser into performing an unwanted action on a trusted site where the user is authenticated. This is achieved by exploiting the fact that the browser includes any relevant cookies (credentials) automatically, allowing the attacker to forge and submit unauthorised requests on behalf of the user (through the browser). The attacker's website may contain HTML forms or JavaScript code that is intended to send queries to the targeted web application.
+
+Cycle of CSRF
+A CSRF attack has three essential phases:
+The attacker already knows the format of the web application's requests to carry out a particular task and sends a malicious link to the user.
+The victim's identity on the website is verified, typically by cookies transmitted automatically with each domain request and clicks on the link shared by the attacker. This interaction could be a click, mouse over, or any other action.
+Insufficient security measures prevent the web application from distinguishing between authentic user requests and those that have been falsified.
+
+
