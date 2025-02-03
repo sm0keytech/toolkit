@@ -1,0 +1,35 @@
+Arbitrary Origin
+Exploiting an Arbitrary Origin vulnerability is relatively easy compared to other CORS vulnerabilities since the application accepts cross-origin requests from any domain name. For example, below is the vulnerable code of http://corssop.thm/arbitrary.php:
+
+if (isset($_SERVER['HTTP_ORIGIN'])){
+    header("Access-Control-Allow-Origin: ".$_SERVER['HTTP_ORIGIN']."");
+    header('Access-Control-Allow-Credentials: true');
+}
+
+The code above implements a flawed CORS policy since it echoes back the Origin header from the client request in the Access-Control-Allow-Origin header without proper validation. An attacker might use an origin like http://evilcors.thm and the server will echo it back.
+
+To exploit the vulnerable code above, go to http://exploit.evilcors.thm. The exploit server has an existing JavaScript code that makes cross-origin requests to the target application. The sample exploit code can be found at http://corssop.thm/exploits/data_exfil.html. The exploit code uses XMLHttpRequest to send requests to the vulnerable application and process the response. The processed response will be sent to the web server with the receiver.php file.
+
+In the exploit code, change the target URL to http://corssop.thm/arbitrary.php.
+
+Also, change the URL of the web server that will receive the exfiltrated data. If you're using AttackBox, use the pattern ATTACKER_IP:81 since Apache runs in port 81. Feel free to change the port if you're using your machine.
+
+Once done with the updates, click the Save button. To verify if the exploit is working, click the View exploit button. This will open a new tab containing the exploit code saved in the hosting server.
+
+In the newly open tab, open Developer tools > Network. There should be two XHR connections. The first request is sent to the target website, while the second is sent to the exfiltrating server.
+
+You can now click the Send to victim button on the Exploit server's homepage.
+
+Note: The victim will automatically visit the evil website containing the exploit code using the website http://evilcors.thm.
+
+To check if the victim has successfully executed the exploit code, check the exploit server's logs by clicking the Logs button in the navigation bar. The logs should have a request from IP 10.10.39.12 since this is the victim's IP address. 
+
+In your exfiltrator server, you should receive a POST request from the victim. This POST request contains the whole webpage response of the first XHR request in our exploit.
+
+Note: The IP differs from the previous image since the victim is simulated in an internal network. So, an outbound connection will use the IP of the machine instead.
+
+Open data.txt located in /var/www/html to view the exfiltrated data from the user.
+
+In the real world, if the target response includes sensitive data like user data, tokens, and API tokens, your JavaScript can capture this and potentially send it to a server under your control. To summarize, below is the entire process of the exploitation once the user clicks or visits the hosted exploit code:
+
+

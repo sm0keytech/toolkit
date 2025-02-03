@@ -28,3 +28,9 @@ which nc
 or sometimes 
 locate nc if you want to find the files y
 
+tail -n1: show the last line of something, for example: 
+tail -n1 /var/log/apache2/access.log
+shows the last line of the apache access.log file.
+
+ls -ltr | tail -n1
+shows the oldest file in a current directory
