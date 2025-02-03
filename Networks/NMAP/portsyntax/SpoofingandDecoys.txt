@@ -1,0 +1,22 @@
+Spoofing IPs
+nmap -S SPOOFED_IP MACHINE_IP
+
+ 
+nmap -e NET_INTERFACE -Pn -S SPOOFED_IP MACHINE_IP
+-e to specify network interface 
+-Pn to disable ping scan
+You can specify the source MAC address using --spoof-mac SPOOFED_MAC
+
+You can launch a decoy scan by specifying a specific or random IP address after -D. 
+For example, nmap -D 10.10.0.1,10.10.0.2,ME MACHINE_IP
+
+This is a decoy thing, it uses the following:
+Sends three IP addresses to do scans to a machine_ip.
+
+Spoofed MAC Address	
+--spoof-mac SPOOFED_MAC
+
+Spoofed Source IP	
+sudo nmap -S SPOOFED_IP MACHINE_IP
+
+

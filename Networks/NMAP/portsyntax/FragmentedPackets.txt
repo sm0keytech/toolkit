@@ -1,0 +1,9 @@
+Fragmented packets can help to evade a firewall.
+-f is to fragment the packets.
+
+Adding another -f (-f -f or -ff) will split the data into 16 byte-fragments instead of 8.
+You can change the default value by using the --mtu; however, you should always choose a multiple of 8.
+
+On the other hand, if you prefer to increase the size of your packets to make them look innocuous, you can use the option --data-length NUM, where num specifies the number of bytes you want to append to your packets.
+
+

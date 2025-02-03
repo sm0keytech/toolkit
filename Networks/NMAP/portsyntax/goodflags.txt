@@ -5,3 +5,7 @@
 -sn: no port scan, just ping scan. prints out available hosts that respond to discovery probes.
 
 -A: Enable OS detection, version detection, script scanning, and traceroute
+
+for using DNS servers, use the following:
+-R to quert DNS servers
+-dns-servers DNS_SERVER

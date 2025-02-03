@@ -1,0 +1,8 @@
+this is ping scanning
+pretty unreliable but works sometimes
+-PE is the flag
+use -sn if you dont wanna follow it with a portscan
+
+ICMP echo requests are generally blocked. maybe use 
+-PP instead to use ICMP timestamp requests 
+-PM is a address mark query, 

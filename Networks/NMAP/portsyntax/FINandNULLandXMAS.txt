@@ -1,0 +1,13 @@
+Null scan - all six bits set to zero. 
+use -sN option.
+Use a lack of response as the port is maybe open, but if the port is closed, itll send a reset and an ACK back normally.
+
+Fin scan - FIN flag is set. No response if a TCP port is open again.
+-sF flag.
+Sometimes, firewalls will drop packets silently, so need to be careful.
+
+Xmas scan - sets the FIN, PSH AND URG flags simultaneously.
+-sX flag.
+One scenario where these three scan types can be efficient is when scanning a target behind a stateless (non-stateful) firewall. A stateless firewall will check if the incoming packet has the SYN flag set to detect a connection attempt. Using a flag combination that does not match the SYN packet makes it possible to deceive the firewall and reach the system behind it. However, a stateful firewall will practically block all such crafted packets and render this kind of scan useless.
+
+

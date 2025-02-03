@@ -1,0 +1,3 @@
+-PR starts an ARP scan.
+its faster and more reliable on local networks
+many modern firewalls block SYN scans, so its sometimes useful for firewall evasion

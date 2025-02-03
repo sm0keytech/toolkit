@@ -1,0 +1,27 @@
+TCP SYN Ping
+if you wanna use it, do the following:
+-PS followed by port number, range, list or a combination of them.
+nmap -PS -sn machine_ip/24
+
+TCP ACK Ping
+This sends ACK packets, similar to SYN ping, where you need 
+-PA followed by port num, range, list or combo of them.
+nmap -PA80,443,8080 (same syntax for above)
+can also use the 
+nmap -PA -sn machine_ip/24
+
+TCP Maimon Scan
+-sM flag.
+Most target systems respond with an RST packet regardless of whether the TCP port is open. In such a case, we won’t be able to discover the open ports. The figure below shows the expected behaviour in the cases of both open and closed TCP ports.
+The console output below is an example of a TCP Maimon scan against a Linux server. As mentioned, because open ports and closed ports are behaving the same way, the Maimon scan could not discover any open ports on the target system.
+
+TCP Window Scan
+-sW
+Another similar scan is the TCP window scan. The TCP window scan is almost the same as the ACK scan; however, it examines the TCP Window field of the RST packets returned. On specific systems, this can reveal that the port is open. You can select this scan type with the option -sW. As shown in the figure below, we expect to get an RST packet in reply to our “uninvited” ACK packets, regardless of whether the port is open or closed.
+
+UDP Ping
+we can use UDP to discover if the host is online
+nmap -PU -sn target
+
+
+

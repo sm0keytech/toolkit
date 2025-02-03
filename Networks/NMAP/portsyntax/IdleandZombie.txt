@@ -1,0 +1,2 @@
+You can run an idle scan using nmap -sI ZOMBIE_IP MACHINE_IP, where ZOMBIE_IP is the IP address of the idle host (zombie).
+

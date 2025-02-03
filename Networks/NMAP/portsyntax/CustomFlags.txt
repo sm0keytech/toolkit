@@ -1,0 +1,3 @@
+Custom Scan
+The flags are --scanflags RSTSYNFIN
+use it if you wanna experiment
