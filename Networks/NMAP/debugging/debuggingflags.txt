@@ -1,0 +1,5 @@
+--reason	explains how Nmap made its conclusion
+-v 		verbose
+-vv		very verbose
+-d		debugging
+-dd		more details for debugging
