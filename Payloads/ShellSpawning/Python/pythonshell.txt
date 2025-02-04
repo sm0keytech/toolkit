@@ -1,0 +1,7 @@
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+then, another command to do something else (i will research this if i ever look at this again)
+export TERM=xterm
+and another (see before)
+stty raw -echo; fg
+then "id" to check who we are 
+sudo -l to check sudo perms

@@ -1,0 +1,5 @@
+to get a python script from pycache, do the following:
+
+download pycdc from snap (installation instructions under general / linux / snap
+
+then, run it with the input script

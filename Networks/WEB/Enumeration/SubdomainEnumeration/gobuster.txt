@@ -2,3 +2,4 @@ pretty widely used tool for dns busting
 
 gobuster dns -d example.com -w /usr/share/wordlists/subdomains.txt
 
+gobuster dir -u url.com -w /usr/share/blah

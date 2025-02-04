@@ -1,0 +1,6 @@
+You can do something like hit a hexedit, and then change the file signature to something unrecognized if it is a whitelist
+Make sure to put some text like AAAA beforehand to do the hexedit so you can change what the image file actually is
+
+
+Or something basic like using a double extension, although this almost never works unless you are doing a super basic room or you are really lucky as
+most places will use a whitelist these days
