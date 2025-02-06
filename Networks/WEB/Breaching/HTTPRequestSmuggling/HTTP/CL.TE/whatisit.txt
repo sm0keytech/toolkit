@@ -1,0 +1,6 @@
+CL.TE stands for Content-Length/Transfer-Encoding. The name CL.TE comes from the two headers involved: Content-Length and Transfer-Encoding. In CL.TE technique, the attacker exploits discrepancies between how different servers (typically a front-end and a back-end server) prioritize these headers. For example:
+The proxy uses the Content-Length header to determine the end of a request.
+The back-end server uses the Transfer-Encoding header.
+
+Because of this discrepancy, it's possible to craft ambiguous requests that are interpreted differently by each server. For example, Imagine sending a request with both Content-Length and Transfer-Encoding headers. The front-end server might use the Content-Length header and think the request ends at a certain point due to the provided number of bytes. In contrast, the back-end server, relying on the Transfer-Encoding header, might interpret the request differently, leading to unexpected behaviour.
+

@@ -1,0 +1,21 @@
+Practical Example
+In this example, we will exploit an H2.CL vulnerability in an old version of Varnish proxy. In this lab, the proxy uses a single backend connection to handle the incoming requests of all users so that we can use the H2.CL vulnerability to interfere with other users' requests.
+The application can be accessed via https://10.10.15.94:8000/ and simulates an extremely simple social network. In this case, you can see your own posts (a single one) and like and dislike them. We will use the H2.CL vulnerability to force other users to like our post (the lab simulates a victim user).
+
+First, let's analyse how the application works. By simple inspection, we can find out two important things:
+The application stores a sessid cookie in your browser with your assigned username to track your identity.
+To like a post, a GET request is sent to /post/like/<post_id>, where post_id is the id of the post we want to like. We can safely guess that the application will identify which user likes the post from the sessid cookie.
+
+To force other users to like our post, we can send the following POST request:
+Notice we are using the POST method for the HTTP/2 request, because we want to send a request with a body. Since we set the content-length to 0, the backend will think the POST request has no body, and whatever comes next will be interpreted as a separate request (smuggled).
+We are smuggling an incomplete GET request to /post/like/12315198742342. This request corresponds to giving a like to our post. Since the request is unfinished, the backend server will wait for more data in the backend connection to complete it. If another user were to send a request to the website right after that (to any URL), their request would be appended to our incomplete request. As a result, the backend server would receive a request like the following:
+Notice how the request of our victim becomes a request to like our post. The original URL requested by the victim is ignored since it became part of the X: header we injected in the smuggled request. As a result, the backend server will process a like to our post but with the victim's cookies.
+To get this working on Burp Suite, we would need to capture an HTTP/2 request to the site and use the Repeater to modify it until it looks like this:
+
+
+Note: Be sure NOT to leave any additional newlines after the X: f header. If such spaces exist, the request line of the next incoming request won't be concatenated in the same line as our bogus header, making it a separate request altogether.
+Be sure to check in the upper right corner that your repeated request is indeed an HTTP/2 request. Since our attack requires setting the Content-Length header to 0, we will also need to uncheck the "Update Content-Length" setting of the Repeater. Otherwise, Repeater will calculate the correct Content-Length depending on the size of the request body.
+Once you have sent your payload, allow up to 30 seconds for the victim user to send a request. You may need to attempt the attack a couple of times to catch the user request on time. Make sure not to send any requests during the 30 seconds after poisoning the backend connection, cause doing so would make you trigger the payload yourself
+If all went well, you should now have a like from the victim user.
+
+

@@ -1,0 +1,10 @@
+HTTP/2 Downgrading
+When a reverse proxy serves content to the end user with HTTP/2 (frontend connection) but requests it from the backend servers by using HTTP/1.1 (backend connection), we talk about HTTP/2 downgrading. This type of implementation is still common nowadays, making it possible to reintroduce HTTP request smuggling in the context of HTTP/2, but only where downgrades to HTTP/1.1 occur.
+Instead of dealing directly with HTTP/2, we send HTTP/2 requests in the frontend connection to influence the corresponding HTTP/1.1 request generated in the backend connection so that it causes an HTTP desync condition. 
+Ideally, the proxy should safely convert a single HTTP/2 request to a single HTTP/1.1 equivalent. This is only sometimes true in practice. Each proxy implementation may handle the conversion slightly differently, making introducing a malicious HTTP/1.1 request in the backend connection possible, leading to any of the typical cases of HTTP desync.
+
+The Expected Behaviour
+Before getting into request smuggling, let's understand how a request would be translated from HTTP/2 to HTTP/1.1. Take the following POST request as an example:
+(generic post request)
+The process is straightforward. The headers and the body from the HTTP/2 request are directly passed into the HTTP/1.1 request. Notice that the HTTP/2 request includes a content-length header. Remember that HTTP/2 doesn't use such a header, but HTTP/1.1 requires one to delimit the request body correctly, so any decent browser will include content-length in HTTP/2 requests to preemptively deal with HTTP downgrades. In the case of the proxies we will be using, the Host header is added after all the other headers based on the content of the :authority pseudo-header. Other proxy implementations may have the host header appear before the rest of custom headers.
+
