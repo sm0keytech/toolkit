@@ -1,0 +1,2 @@
+hash-identifier
+is a binary available right now on kali linux which is really decent for what it says it does
