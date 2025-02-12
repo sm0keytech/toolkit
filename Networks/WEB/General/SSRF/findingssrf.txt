@@ -1,0 +1,7 @@
+to find a ssrf, you can try to issue a request to a netcat listener which then can see whether it could be vulnerable
+
+start a netcat server then type the ip & port into the search field 
+
+http://10.10.10.10:1234/nonexistent
+
+if you hit a GET request within the NC server, you could be in luck

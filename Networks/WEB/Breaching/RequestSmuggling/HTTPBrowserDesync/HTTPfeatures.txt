@@ -1,0 +1,7 @@
+Http keep-alive: allows the re usage of one tcp connection rather than having to use more than one. If caching features are in place, then cache poisoning could
+take place within this allowing attackers to exploit it.
+
+Http pipelining: If pipelining is enabled within the backend server of a program, then it will allow the simultanous sending of two requests with the corresponding 
+responses without waiting for each resposne. The only way to differentiate between two requests and a big one is by using the Content-Length header, which specifies the length in bytes of each request. The content header is an unnecessary header for most static file contents in a web application, like images or icons, since the backend server will usually not consider it.
+
+
