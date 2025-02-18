@@ -1,0 +1,1 @@
+shell - pretty sure this drops a cmd shell to run stuff like ver or uname

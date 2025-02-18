@@ -1,0 +1,16 @@
+This contains stuff that can bypass privileg stuff
+
+first launch da powershell session and do 
+whoami /priv
+find whichever one you can use to exploit da system
+
+Here is a list of things ive done and stuff it relates to
+
+SeDebugPrivilege, SeImpersonatePrivilege
+If these are enabled, incognito module works a treat
+(load incognito)
+list_tokens -g
+impersonate_token "BUILTIN\Administrators" (whichever account is admin)
+Even though you have a higher privileged token, you may not have the permissions of a privileged user (this is due to the way Windows handles permissions - it uses the Primary Token of the process and not the impersonated token to determine what the process can or cannot do).
+Ensure that you migrate to a process with correct permissions (the above question's answer). The safest process to pick is the services.exe process. First, use the ps command to view processes and find the PID of the services.exe process. Migrate to this process using the command migrate PID-OF-PROCESS
+

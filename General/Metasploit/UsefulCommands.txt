@@ -8,3 +8,10 @@ useful.
 
 download - pretty obvious
 
+sysinfo
+whoami /priv (powershell)
+getuid
+
+shell - drop a cmd shell
+
+echo %username% - echo the windows username 

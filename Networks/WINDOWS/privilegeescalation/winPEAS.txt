@@ -1,0 +1,6 @@
+winPEAS windoes privilege escalation awesome scripts is a .bat file you can slap into something in order to get some nice privesc scripts.
+
+https://github.com/peass-ng/PEASS-ng/blob/master/winPEAS/winPEASexe/README.md
+
+
+clone: https://github.com/peass-ng/PEASS-ng

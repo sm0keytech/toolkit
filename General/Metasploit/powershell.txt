@@ -1,0 +1,8 @@
+load powershell - obvious
+powershell_shell - get into da powershell shell
+
+if you gotta run scripts, use:
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
+exit to leave the PS session
+dont spam as you will leave msf entirely

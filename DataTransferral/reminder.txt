@@ -1,0 +1,5 @@
+If you are doing this onto windows machines, a good place to dump usually is 
+C:\Windows\Temp
+
+remember to execute windows programs with 
+.\ and not ./ lmao i am such an idiot sometimes
