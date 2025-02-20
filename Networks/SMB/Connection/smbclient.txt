@@ -1,0 +1,5 @@
+smbclient //skynet.thm/anonymous -N
+N for null authentication btw
+
+smbclient //skynet.thm/milesdyson -U milesdyson
+share, and then the username

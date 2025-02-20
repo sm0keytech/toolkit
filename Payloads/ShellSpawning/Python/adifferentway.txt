@@ -1,0 +1,3 @@
+python -c "import pty;pty.spawn('/bin/bash')"
+
+(for when you want a cleaner shell. didnt work for me for some reason but hope it works next time!)

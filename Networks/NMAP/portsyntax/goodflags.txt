@@ -9,3 +9,11 @@
 for using DNS servers, use the following:
 -R to quert DNS servers
 -dns-servers DNS_SERVER
+
+-sC: default scripts
+
+-sV: service enum
+
+-sS: another enum
+
+-O: operating sys enum

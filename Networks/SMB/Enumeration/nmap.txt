@@ -1,0 +1,2 @@
+nmap --script smb-enum-shares,smb-enum-users -p139,445 skynet.thm
+ enum for smb

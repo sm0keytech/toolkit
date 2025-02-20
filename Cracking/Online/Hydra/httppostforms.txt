@@ -16,3 +16,6 @@ now, we need to add an error message to finalise the concacenation of the string
 For this one, it can just be ":Login Failed" but this might need to be adapter per pentest. you can also filter through HTTP codes, or content length.
 
 also remember to change the usernames and passwords to ^USER^ and ^PASS^.
+
+also, remember, using a wordlist is -P, not -p.
+i think the same applies to usernames

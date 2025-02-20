@@ -1,0 +1,3 @@
+crackmapexec smb skynet.thm
+
+another tool for smb enum, havent used yet tho

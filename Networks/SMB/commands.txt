@@ -1,0 +1,4 @@
+More - read something
+Get - download something 
+ls - standard
+
