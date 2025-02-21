@@ -1,0 +1,5 @@
+this is used to scan joomla to see whether it is vulnerable. joomla is a content management system.
+
+https://github.com/OWASP/joomscan
+
+perl joomscan.pl -u http://website.thm/administrator (wherever the joomla portal is)
