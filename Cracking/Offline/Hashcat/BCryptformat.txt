@@ -1,0 +1,1 @@
+Hashcat -m 3200 /usr/share/rockyou.txt ./hash.txt
