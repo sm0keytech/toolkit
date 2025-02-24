@@ -1,0 +1,6 @@
+the easiest way is to just
+sudo -l
+then go to gtfobins
+and find your way to root
+
+most of the time sudo -l doesnt work but if they do this then its soooo freeeeee

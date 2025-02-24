@@ -1,0 +1,5 @@
+/var/www/html is usually where all writeable web server files are found
+
+sometimes people will save files using crontab and using a wildcard * to save everything to a backup file which could be exploited to escalate privileges so check that
+
+also check config files within that directory and anything else that you could find in order to gain some sort of shell

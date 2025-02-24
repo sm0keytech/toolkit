@@ -1,0 +1,10 @@
+an example of a password from /etc/shadow
+
+muirland:$6$SWybS8o2$9diveQinxy8PJQnGQQWbTNKeb2AiSp.i8KznuAjYbqI3q04Rf5hjHPer3weiC.2MrOj2o1Sw/fd2cu0kC6dUP.:18464:0:99999:7:::
+
+muirland → Username
+$6$SWybS8o2$9diveQinxy8PJQnGQQWbTNKeb2AiSp.i8KznuAjYbqI3q04Rf5hjHPer3weiC.2MrOj2o1Sw/fd2cu0kC6dUP. → Hashed password
+$6$ → Hashing algorithm (SHA-512)
+SWybS8o2 → Salt (random data to make attacks harder)
+Rest → The actual hashed password
+18464:0:99999:7::: → Other fields related to password expiration, but not important for cracking.

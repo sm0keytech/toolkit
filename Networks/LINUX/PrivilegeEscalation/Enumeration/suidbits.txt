@@ -1,0 +1,32 @@
+so, if we are looking for binaries, a lot of the time we can be looking for suid bits within binaries in order to execute and exploit the file to escalate.
+
+find suid files:
+find / -perm -4000 -type f 2>/dev/null
+
+find set group id files:
+find / -perm -2000 -type f 2>/dev/null
+
+find writeable suid/sgid files:
+find / -perm -4002 -type f 2>/dev/null
+
+find sgid files that are world writeable:
+find / -perm -2002 -type f 2>/dev/null
+
+check perms of a specific file:
+ls -l /path/to/file
+
+heres an exmaple:
+-rwsr-xr-x 1 root root 23456 Feb 20 10:00 /usr/bin/passwd
+we can see a suid bit is set through the s in rws at the beginning 
+
+so if you are in a directory, or need to find whether its writeable so you can place a payload, check with the following commands:
+ls -ld /var/tmp/*
+or just ls -ld  if youre in the directory
+
+if it returns with something like:
+drwxrwxrwt (world writeable with a sticky bit) or
+drwxrwxr-x
+
+check specific folders for read / write bits:
+ls -la /var/tmp/systemd-private-*/ 2>/dev/null
+

@@ -14,6 +14,7 @@ ps -aux | grep 'root' (finds processes, greps the root)
 available exploits.
 
 - Logged in users: Understanding which users are available and logged in can be critical for lateral and horizontal movement.
+check all users aswell with /etc/passwd
 
 - User home directories: Other user's home directories could contain valuable information that you can use for this.
 

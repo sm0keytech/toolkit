@@ -1,0 +1,18 @@
+detecting executable transfer (b64, exe, etc):
+frame contains "mz"
+
+always check dns, http.request, http.response, smb, smb2, ftp
+
+
+frame contains "powershell"
+look for powershell
+
+file > export objects to see if there are any objects. usually good things in here
+
+dns.qry.name contains "github.com"
+check github stuff
+
+following http and tcp streams are great
+
+netcat reverse shells tranfer everything inside of plaintext so good to intercept
+once you find the port follow the tcp stream and youll find all the data
