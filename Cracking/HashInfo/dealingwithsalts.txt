@@ -1,0 +1,3 @@
+theres lots of guidance in the documents for this but usually you gotta format it like
+
+hashcat -m hashmode "hash:salt" --force /usr/share/wordlists/rockyou.txt

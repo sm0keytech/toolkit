@@ -1,0 +1,2 @@
+rpcclient -U "" -N relevant.thm
+if you can get in but no files maybe try this 

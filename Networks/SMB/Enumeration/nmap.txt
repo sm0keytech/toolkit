@@ -1,2 +1,5 @@
+nmap --script=smb-vuln* -p 139,445 relevant.thm
+vulnerabilities for smb
+
 nmap --script smb-enum-shares,smb-enum-users -p139,445 skynet.thm
- enum for smb
+enum for smb

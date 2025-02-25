@@ -1,0 +1,3 @@
+smbclient //relevant.thm/C$ -U Bob
+
+
