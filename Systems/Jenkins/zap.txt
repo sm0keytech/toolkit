@@ -1,0 +1,3 @@
+you can use OWASP ZAP for jenkins cause burp suite is hella slow with rate limiting.
+
+launch zap, send da request, and see if it works. had a bit of trouble with 127.0.0.1, but this one isnt limited like burp is, so could be quite useful for future.

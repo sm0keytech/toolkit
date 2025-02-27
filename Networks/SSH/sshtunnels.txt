@@ -1,0 +1,6 @@
+here is how to make an ssh tunnel into a server:
+
+ssh -L 8080:172.17.0.2:8080 username@10.10.10.10
+
+this is to make a website from a network reachable inside of your machine too
+make sure its not on a already used ip i think it breaks it but not sure.

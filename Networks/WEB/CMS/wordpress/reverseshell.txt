@@ -1,0 +1,12 @@
+for wordpress, again its in themes that we can use to create a reverse shell.
+
+appearance > theme editor
+
+then select the text and replace it with a php reverse shell 
+(in a real world environment you would just want to add maybe a simple php command shell on top instead of deleting everything)
+
+do it on somewhere which wont affect it too much, rn im choosing the 404 template which is pretty good idea.
+
+then, go to the website inside of the network:
+
+http://internal.thm/blog/wp-content/themes/twentyseventeen/404.php

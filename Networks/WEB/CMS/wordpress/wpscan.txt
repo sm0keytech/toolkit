@@ -1,0 +1,17 @@
+So wpscan or wordpress scan is a tool specifically for enumerating wordpress.
+
+enumeration scan work:
+
+wpscan --url http://10.10.10.10/blog -e vp,u 
+
+vp - vulnerable plugins 
+u - users
+
+-e enumerate
+
+/blog can be wherever you want to search within the wordpress directory
+
+
+brute force login work:
+
+wpscan --url http://10.10.10.10/blog --usernames admin --passwords /usr/share/wordlists/rockyou.txt

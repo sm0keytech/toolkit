@@ -34,3 +34,5 @@ shows the last line of the apache access.log file.
 
 ls -ltr | tail -n1
 shows the oldest file in a current directory
+
+netstat /ano to find the services running inside of a network, could be a ssh network where this command is useful

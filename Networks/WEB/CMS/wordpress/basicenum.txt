@@ -1,0 +1,7 @@
+So, for wordpress sites, make sure to do deep directory brute forcing. This means not just doing the basic http server, but then following up on the links.
+
+http://wordpresssite/blog/admin (not the actual link but kinda it) was found using deep directory brute forcing, so make sure to do all the enum possible or you
+will definitely miss things.
+
+once you find a login portal, another thing with wordpress is that it is very common for it to disclose usernames through saying "this is the wrong password for this
+username". 
