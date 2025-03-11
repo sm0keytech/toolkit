@@ -1,0 +1,59 @@
+gdb ./vuln (opening the program with gdb in order to get things going)
+disassemble function (this dissasembles the function to find the address of it, so we can invoke it through the buffer overflow)
+
+once the function is disassembled, you can look at the start address with the following
+
+(output):
+Dump of assembler code for function special:
+   0x0000000000400567 <+0>:     push   %rbp
+   0x0000000000400568 <+1>:     mov    %rsp,%rbp
+   0x000000000040056b <+4>:     mov    $0x400680,%edi
+   0x0000000000400570 <+9>:     callq  0x400460 <puts@plt>
+   0x0000000000400575 <+14>:    mov    $0x40069d,%edi
+   0x000000000040057a <+19>:    callq  0x400460 <puts@plt>
+   0x000000000040057f <+24>:    nop
+   0x0000000000400580 <+25>:    pop    %rbp
+   0x0000000000400581 <+26>:    retq   
+End of as
+
+0x400567 is special's address.
+
+(you can also use print function in order to print the address of the function)
+
+rememeber to check whether addresses are little endian or big endian
+
+if a program uses gets(), then it doesnt check input length, which is really good for buffer overflows.
+
+We use a cyclic pattern to do this because then we can check exactly where the program crashes instead of just guessing.
+Say we send this pattern:
+Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5
+Then the program crashes and returns this:
+0x37614136 ('6Aa7' in ASCII)
+We can find the exact offset there, which tells us however many bytes we need to send in order to overflow.
+
+The following script will send 100 bytes of a cyclic pattern, which will crash.
+python3 -c 'import sys; from pwn import cyclic; sys.stdout.buffer.write(cyclic(100))' | ./overflow
+Then, when it crashes, we can check to see where it crashed:
+info frame 
+
+Or find the exact offset using pwntools:
+python3 -c 'from pwn import cyclic_find; print(cyclic_find(0x37614136))'
+
+If python is not installed in the environment, generate your own cyclic pattern:
+# Generate a simple cyclic pattern (first 100 characters)
+echo -n "Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5" | ./func-pointer
+you should get segmentation fault
+
+after youve fed it this, run it with gdb, then info frame.
+
+
+you can also do it the painful way (manually):
+gdb ./func-pointer
+break gets (stop the program before it reaches the input stage)
+run (run it)
+info registers (find information on the registers)
+
+we will see something similar to this:
+rsp: 0x7fffffffdd00
+
+

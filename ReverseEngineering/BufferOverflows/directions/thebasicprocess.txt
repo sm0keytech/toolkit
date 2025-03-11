@@ -1,0 +1,77 @@
+So, for every overflow, the general consensus is:
+
+Find the address of the start of the buffer, and then the start address of the return address.
+Calculate the difference between these addresses so we know how much data to enter.
+
+NO-OP code, shell, memory address in this order.
+The sled leads down to the shell, the memory address executes the no op code.
+
+python -c "print (NOP * no_of_nops + shellcode + random_data * no_of_random_data + memory address)"
+This would be an example of shellcode using python so you don't have to spam input.
+
+run $(python -c "print('A'*158)")
+this does it inside of gdb debugger!
+
+
+But how do we know that we've overwrote it successfully?
+let's do some more digging:
+
+first, let's dissect this binary!
+gdb ./binary 
+break function
+run 
+(here we are just running the program normally)
+
+info frame 
+x/20xg $rsp-20 (the 20 is interchangeable if you wanna see more) 
+(here we are checking the stack layout)
+(i ended up using rsp 200 on the register as it gave me a lot more info, wouldn't of been able to do this without that)
+
+run $(python -c "print('A' * 158)")
+x/20xg $rsp-20
+(here, we are inserting 158 bytes and then re checking to see if we have overwrote it successfully)
+
+
+
+
+
+how can we be sure where we need to overwrite?
+
+| Lower addresses --> Higher addresses |
+----------------------------------------
+| Function arguments (if any)          |
+| Saved return address (RIP)           |  <-- We will overwrite this to point to our shellcode!
+| Saved base pointer (RBP)             |  <-- We need to overwrite this in order to get to the return address. This is usually 8 bytes + 4 more bytes overflow.
+| Local variables (e.g., buffer[140])  |  <-- This is our buffer
+----------------------------------------
+
+140 + 8 + 4 = 152. 152 will be the start of the return address we will need to overwrite.
+
+
+So, another update, in a different question, I am using a slightly differernt method of attack.
+So, the buffer size is 154. There is a word "doggo" in the buffer, so we minus 5 to begin with.
+We then add 8 bytes for the return address register, and then another 8 bytes for the saved frame pointer.
+We then add a further 4 bytes as we have 4 bytes overflow. So in here, this is the end of the return address if you need it.
+
+
+How do we know where the return address actually is?
+this is done through trial and testing. we know that the buffer is 140 bytes long, so we send 140 bytes plus then a few more.
+when we completely overwrite the address with As, (0x4141414141), we know we are getting close. we are trying to get the system to spit a similar error out:
+0x0000000000400563 in copy_arg ()
+This is our return address that we need to overwrite.
+From this, we can tell that the return address is 6 bits (400563).
+To do this, I sent 159 As into a 140 buffer. This completely overwrote the address, spitting out this error.
+So, we know that 158 As completely overwrites it. The address is 6 bits, so we need to jump 6 back, so 158 - 6 = 152. This is the start of our return address.
+
+
+
+
+Now, how do we replace the return address?
+The return address is usually quite complicated, meaning we can never get an exact pinpoint reading unless we are extremely lucky or in some form of test
+environment. For this reason, we use no-op sleds. This means that we can fill the code with no-ops (\x90), and then itll directly slide to our actual shellcode!
+With this, we can then just pick an address that is full of no-ops and be sure that it will end up within our shellcode that we need to execute.
+A final thing, its normally a LOT of trial and error. If you get illegal instruction, that is just the CPU whining. Choose a different address.
+You will need to go through a fair few. It's just life unfortunately.
+
+Next up, im gonna write about doings things to the binary in order to give us admin!
+

@@ -1,0 +1,25 @@
+You can also add things from something like pwntools where we could generate shellcode in order to give us more control over what we can do wtihin a binary.
+For example, within the binary I am currently working with, I am doing something named setreuid. I'm using this to interpret myself as someone else, 
+I think this is a pretty basic privesc vector.
+
+For this, we can use pwntools, a pretty decent repo containing a lot of different really decent tools for us.
+apt-get update
+apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade pwntools
+
+pip is a bitch on linux sometimes so you can just use pipx instead, i did this run cause it wouldnt work and i didnt wanna break my 
+apt package manager
+
+Then, the command:
+pwn shellcraft -f d amd64.linux.setreuid 1002
+
+pwn - application
+
+shellcraft - subcommand which means we are crafting shellcode 
+
+-f file type d for decimal (or binary)
+
+amd64.linux.setreuid - tells it to generate shellcode for amd64 linux and generate the system call for setreuid so i can set us to user 1002
+
+1002 is the user id of user 2 on this system!
