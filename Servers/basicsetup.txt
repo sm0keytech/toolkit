@@ -1,0 +1,23 @@
+so this took me a while but was so rewarding.
+
+sign into oracle, make the account, etc.
+use the link from the email to sign in, it is fucky but what can you do when its free.
+
+get in, now we want to open a port so we can send our results back to our lovely server for further examination + we'd actually do this in a red team excercise.
+MAKE SURE YOU SAVE THE SSH KEY FROM THE SETUP OTHERWISE YOU ARE COOKED
+
+
+ssh into da machine, we now have our lovely server setup.
+firstly, we also wanna go onto the website, check the instance, note the ip all the good stuff
+
+when thats done, we are now wanting to open a port. navigate to the following:
+three lines top left --> virtual cloud networks --> click the active one which is highlighted --> scroll down until you see security lists -->
+click blue highlighted "default security lists" --> add an ingress rule --> source port range should be all, destination port should be whatever you want,
+i chose 8080 but could be whatever within reason --> source CIDR should be 0.0.0.0/0 to allow all IPs --> leave everything else default and save changes.
+
+now, within the machine, we need to configure the software firewall. do the following:
+
+sudo apt install firewalld
+sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp < change port to whatever is needed
+sudo firewall-cmd --reload
+python3 -m http.server 8080 < start your http server to recieve what we need!
