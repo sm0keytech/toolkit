@@ -1,2 +1,12 @@
 getuid = Get the current user id.
 
+whoami /priv 
+whoami /groups
+pwd
+whoami
+
+rm *mimikatz
+removes everything that starts with mimikatz
+
+rm *.exe
+removes everything with exe extension

