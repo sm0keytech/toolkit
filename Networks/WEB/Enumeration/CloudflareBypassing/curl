@@ -1,0 +1,4 @@
+curl -I https://api.vault.chiatest.net/
+
+looking for more headers!
+The curl -I response shows HTTP/2 404, meaning the domain is live but has no public page at /.

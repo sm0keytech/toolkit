@@ -1,0 +1,5 @@
+curl -X OPTIONS https://vault.chiatest.net/
+Some apps also expose their CORS policies via OPTIONS requests
+If the response includes an IP, that’s your target.
+
+

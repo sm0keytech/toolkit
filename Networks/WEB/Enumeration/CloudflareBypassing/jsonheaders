@@ -1,0 +1,8 @@
+curl -I https://vault.chiatest.net/
+Look for:
+
+x-originating-ip
+
+x-forwarded-for
+
+via

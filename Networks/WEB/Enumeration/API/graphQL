@@ -1,0 +1,9 @@
+curl -X POST https://api.vault.chiatest.net/graphql -d '{ "query": "{ __schema { types { name } } }" }' -H "Content-Type: application/json"
+see if they have graphQL
+
+
+wfuzz -c -z file,/usr/share/seclists/Discovery/Web-Content/graphql.txt \
+      -d '{ "query": "{ FUZZ }" }' \
+      -H "Content-Type: application/json" \
+      https://api.vault.chiatest.net/graphql
+fuzz for endpoints etc

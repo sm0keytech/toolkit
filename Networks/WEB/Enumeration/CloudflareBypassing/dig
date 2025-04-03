@@ -1,0 +1,5 @@
+dig +short vault.chiatest.net
+dig +short vault.chiatest.net A
+dig +short vault.chiatest.net MX
+dig +short vault.chiatest.net TXT
+host api.vault.chiatest.net

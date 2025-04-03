@@ -1,0 +1,3 @@
+ffuf -u https://api.vault.chiatest.net/FUZZ -w /usr/share/wordlists/dirb/common.txt -fc 404 -rate 5
+
+ez check for api endpoints
